@@ -39,7 +39,10 @@ export default function NewProduct() {
           <option value="Sala">Sala</option>
           <option value="Quarto">Quarto</option>
           <option value="Banheiro">Banheiro</option>
+          <option value="Lavanderia">Lavanderia</option>
           <option value="Escritório">Escritório</option>
+          <option value="Quintal/Jardim">Quintal/Jardim</option>
+          <option value="Varanda/Sacada">Varanda/Sacada</option>
         </select>
       </div>
 
