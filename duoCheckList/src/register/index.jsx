@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router'
 
 export default function Register() {
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
   const [repeatPassword, setRepeatPassword] = useState("")
-
+  const navigate = useNavigate()
 
   async function handleClick() {
     const data = {
@@ -28,6 +29,7 @@ export default function Register() {
      
     }else{
       alert("Cadastro efetuado!")
+      navigate("/login")
     }
   }
 

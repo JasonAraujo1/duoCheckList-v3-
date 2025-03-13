@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { fetchApiData } from '../assets/fetchApi'
-import { Navigate, useNavigate } from 'react-router'
+import { Navigate, NavLink, useNavigate } from 'react-router'
 
 export default function Home() {
 
@@ -16,7 +16,7 @@ export default function Home() {
   }, [])
   console.log("teste", dataProduct)
 
-  function handleSelectedProduct(id){
+  function handleSelectedProduct(id) {
     navigate(`/product/${id}`)
     const selectedProduct = dataProduct.find((item) => item.id === id)
   }
@@ -25,7 +25,10 @@ export default function Home() {
     <div>
 
       <div>
-        <button >Adicionar</button>
+        <NavLink to="/new">
+          <button>Adicionar</button>
+        </NavLink>
+
       </div>
 
       <div>
@@ -51,7 +54,7 @@ export default function Home() {
 
           <tr className='border'>
             {dataProduct.map((item) => (
-              <tr onClick={()=>{handleSelectedProduct(item.id)}} className='flex justify-between mx-5'>
+              <tr onClick={() => { handleSelectedProduct(item.id) }} className='flex justify-between mx-5'>
                 <td>{item.product}</td>
                 <td>{item.status}</td>
               </tr>
