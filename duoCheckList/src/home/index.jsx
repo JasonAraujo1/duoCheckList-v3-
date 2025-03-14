@@ -18,6 +18,7 @@ export default function Home() {
   }, [])
   // console.log("teste", dataProduct)
   
+  //REQUISIÇÃO DE CLICK BUSCAR
   function handleClickSearch(){
     const results = dataProduct.filter((item) => 
       item.product.toLowerCase().includes(searchProduct.toLowerCase())
@@ -26,12 +27,13 @@ export default function Home() {
     
     }
   
+    //REQUISIÇÃO POR CARACTER DIGITADO
     const filteredProducts = dataProduct.filter((item) => {
       return (
         (selectedCategory === "" || item.category === selectedCategory) &&
-        (searchProduct === "" || handleClickSearch
+        (searchProduct === "" || item.product.includes(searchProduct))
       )
-    )})
+    })
   // const filteredProducts =
   //   selectedCategory === ""
   //     ? dataProduct
