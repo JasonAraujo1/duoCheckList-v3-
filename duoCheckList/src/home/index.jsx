@@ -6,6 +6,7 @@ export default function Home() {
 
   const [dataProduct, setDataProduct] = useState([])
   const [selectedCategory, setSelectedCategory] = useState("")
+  const [searchProduct, setSearchProduct] = useState("")
 
   useEffect(() => {
     async function onLoad() {
@@ -16,12 +17,25 @@ export default function Home() {
     onLoad()
   }, [])
   // console.log("teste", dataProduct)
-
-
-  const filteredProducts =
-    selectedCategory === ""
-      ? dataProduct
-      : dataProduct.filter((item) => item.category === selectedCategory)
+  
+  function handleClickSearch(){
+    const results = dataProduct.filter((item) => 
+      item.product.toLowerCase().includes(searchProduct.toLowerCase())
+    ) 
+    setDataProduct(results) 
+    
+    }
+  
+    const filteredProducts = dataProduct.filter((item) => {
+      return (
+        (selectedCategory === "" || item.category === selectedCategory) &&
+        (searchProduct === "" || handleClickSearch
+      )
+    )})
+  // const filteredProducts =
+  //   selectedCategory === ""
+  //     ? dataProduct
+  //     : dataProduct.filter((item) => item.category === selectedCategory)
   //selectedCategory é === a vazio? se sim, filteredProduct vai ser igual a dataProduct, fazendo o map de todos os produtos. Se não, filteredProduct vai ser igual ao filtro de dataProduct pela categoria escolhida
 
   return (
@@ -35,7 +49,8 @@ export default function Home() {
       </div>
 
       <div>
-        <input placeholder='Buscar produto' className='border' type="text" />
+        <input onChange={(event)=>setSearchProduct(event.target.value)}  placeholder='Buscar produto' className='border' type="text" />
+        <button onClick={handleClickSearch}>buscar</button>
 
         <select onChange={(event) => setSelectedCategory(event.target.value)} name="" id="" className='border'>
           <option selected disabled value="">Categorias</option>
