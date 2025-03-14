@@ -5,21 +5,24 @@ import { Navigate, NavLink, useNavigate } from 'react-router'
 export default function Home() {
 
   const [dataProduct, setDataProduct] = useState([])
-  const navigate = useNavigate()
+  const [selectedCategory, setSelectedCategory] = useState("")
 
   useEffect(() => {
     async function onLoad() {
       const data = await fetchApiData()
       setDataProduct(data)
+
     }
     onLoad()
   }, [])
-  console.log("teste", dataProduct)
+  // console.log("teste", dataProduct)
 
-  function handleSelectedProduct(id) {
-    navigate(`/product/${id}`)
-    const selectedProduct = dataProduct.find((item) => item.id === id)
-  }
+
+  const filteredProducts =
+    selectedCategory === ""
+      ? dataProduct
+      : dataProduct.filter((item) => item.category === selectedCategory)
+  //selectedCategory é === a vazio? se sim, filteredProduct vai ser igual a dataProduct, fazendo o map de todos os produtos. Se não, filteredProduct vai ser igual ao filtro de dataProduct pela categoria escolhida
 
   return (
     <div>
@@ -34,11 +37,16 @@ export default function Home() {
       <div>
         <input placeholder='Buscar produto' className='border' type="text" />
 
-        <select name="" id="" className='border'>
+        <select onChange={(event) => setSelectedCategory(event.target.value)} name="" id="" className='border'>
           <option selected disabled value="">Categorias</option>
-          <option value="">Adquirido</option>
-          <option value="">Não Adquirido</option>
-          <option value="">Pendente</option>
+          <option value="Sala">Sala</option>
+          <option value="Quarto">Quarto</option>
+          <option value="Banheiro">Banheiro</option>
+          <option value="Lavanderia">Lavanderia</option>
+          <option value="Escritório">Escritório</option>
+          <option value="Quintal/Jardim">Quintal/Jardim</option>
+          <option value="Varanda/Sacada">Varanda/Sacada</option>
+          <option value="Cozinha">Cozinha</option>
         </select>
       </div>
 
@@ -53,8 +61,8 @@ export default function Home() {
         <tbody >
 
           <tr className='border'>
-            {dataProduct.map((item) => (
-              <tr onClick={() => { handleSelectedProduct(item.id) }} className='flex justify-between mx-5'>
+            {filteredProducts.map((item) => (
+              <tr className='flex justify-between mx-5'>
                 <td>{item.product}</td>
                 <td>{item.status}</td>
               </tr>

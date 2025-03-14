@@ -1,13 +1,36 @@
 import { useState } from "react"
+import { NavLink, useNavigate } from "react-router"
 
 export default function NewProduct() {
-  const [nome, setNome] = useState("")
+  const [product, setProduct] = useState("")
   const [status, setStatus] = useState("")
-  const [categoria, setCategoria] = useState("")
-  const [descricao, setDescricao] = useState("")
+  const [category, setCategory] = useState("")
+  const [description, setDescription] = useState("")
+  const navigate = useNavigate()
 
-  function handleClick() {
-    console.log(nome, status, categoria, descricao)
+  async function handleClick() {
+    const data = {
+      product: product,
+      status: status,
+      category: category,
+      description: description
+    }
+    const url = "https://67d2321e90e0670699bca29e.mockapi.io/duoCheckList/data"
+
+    const req = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+    const res = await req.json()
+    console.log("new post", res)
+
+
+    alert("Produto cadastrado!")
+    navigate("/home")
+
   }
 
   return (
@@ -15,12 +38,15 @@ export default function NewProduct() {
 
 
     <div>
-      <button className='text-red-600'>←</button>
+      <NavLink to={"/home"}>
+        <button className='text-red-600'>←</button>
+      </NavLink>
+
       <p className='font-bold'>Novo produto</p>
 
       <div>
-        Nome
-        <input onChange={(event) => setNome(event.target.value)} className='border' type="text" />
+        Produto
+        <input onChange={(event) => setProduct(event.target.value)} className='border' type="text" />
       </div>
 
       <div>
@@ -34,7 +60,7 @@ export default function NewProduct() {
 
       <div>
         Categoria
-        <select onChange={(event) => setCategoria(event.target.value)} name="" id="" className='border'>
+        <select onChange={(event) => setCategory(event.target.value)} name="" id="" className='border'>
           <option selected disabled value="">Categorias</option>
           <option value="Sala">Sala</option>
           <option value="Quarto">Quarto</option>
@@ -43,12 +69,13 @@ export default function NewProduct() {
           <option value="Escritório">Escritório</option>
           <option value="Quintal/Jardim">Quintal/Jardim</option>
           <option value="Varanda/Sacada">Varanda/Sacada</option>
+          <option value="Cozinha">Cozinha</option>
         </select>
       </div>
 
       <div>
         Descrição
-        <input onChange={(event) => setDescricao(event.target.value)} className='border' type="text" />
+        <input onChange={(event) => setDescription(event.target.value)} className='border' type="text" />
       </div>
 
       <button onClick={handleClick}>Enviar</button>
