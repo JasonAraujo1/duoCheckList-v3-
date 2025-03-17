@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { fetchApiData } from '../assets/fetchApi'
-import { Navigate, NavLink, useNavigate } from 'react-router'
+import { NavLink, useNavigate } from 'react-router'
 
 export default function Home() {
 
   const [dataProduct, setDataProduct] = useState([])
-  const [selectedCategory, setSelectedCategory] = useState("")
   const [searchProduct, setSearchProduct] = useState("")
-
+  const [selectedCategory, setSelectedCategory] = useState("")
+  const navigate = useNavigate()
+  
   useEffect(() => {
     async function onLoad() {
       const data = await fetchApiData()
@@ -26,7 +27,7 @@ export default function Home() {
     setDataProduct(results)
 
   }
-
+  
   //REQUISIÇÃO POR CARACTER DIGITADO
   const filteredProducts = dataProduct.filter((item) => {
     return (
@@ -39,7 +40,11 @@ export default function Home() {
   //     ? dataProduct
   //     : dataProduct.filter((item) => item.category === selectedCategory)
   //selectedCategory é === a vazio? se sim, filteredProduct vai ser igual a dataProduct, fazendo o map de todos os produtos. Se não, filteredProduct vai ser igual ao filtro de dataProduct pela categoria escolhida
-
+  
+  function handleClickProduct(id) {
+   
+    console.log("ID do Produto:", id)
+  }
   return (
     <div>
 
@@ -54,7 +59,7 @@ export default function Home() {
         <input onChange={(event) => setSearchProduct(event.target.value)} placeholder='Buscar produto' className='border' type="text" />
         <button onClick={handleClickSearch}>buscar</button>
 
-        <select onChange={(event) => setSelectedCategory(event.target.value)} name="" id="" className='border'>
+        <select onChange={(event) => setSelectedCategory(event.target.value)} className='border'>
           <option selected disabled value="">Categorias</option>
           <option value="Sala">Sala</option>
           <option value="Quarto">Quarto</option>
@@ -81,7 +86,7 @@ export default function Home() {
             {filteredProducts.map((item) => (
               <tr className='flex justify-between mx-5'>
                 <NavLink to={"/product"}>
-                  <td className='cursor-pointer'>{item.product}</td>
+                  <td  onClick={() => handleClickProduct(item.id)} className='cursor-pointer'>{item.product}</td>
                 </NavLink>
                 <td>{item.status}</td>
               </tr>
