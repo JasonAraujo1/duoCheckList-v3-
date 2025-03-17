@@ -1,10 +1,13 @@
-import { useParams } from 'react-router';
+import { NavLink, useParams } from 'react-router';
 
 
 export default function DataProduct() {
   const {id} = useParams()
   return (
     <div>
+      <NavLink>
+        
+      </NavLink>
       <button className='text-red-600'>←</button>
       <p className='font-bold'>Dados do produto</p>
       <div>

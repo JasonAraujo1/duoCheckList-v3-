@@ -17,23 +17,23 @@ export default function Home() {
     onLoad()
   }, [])
   // console.log("teste", dataProduct)
-  
+
   //REQUISIÇÃO DE CLICK BUSCAR
-  function handleClickSearch(){
-    const results = dataProduct.filter((item) => 
+  function handleClickSearch() {
+    const results = dataProduct.filter((item) =>
       item.product.toLowerCase().includes(searchProduct.toLowerCase())
-    ) 
-    setDataProduct(results) 
-    
-    }
-  
-    //REQUISIÇÃO POR CARACTER DIGITADO
-    const filteredProducts = dataProduct.filter((item) => {
-      return (
-        (selectedCategory === "" || item.category === selectedCategory) &&
-        (searchProduct === "" || item.product.includes(searchProduct))
-      )
-    })
+    )
+    setDataProduct(results)
+
+  }
+
+  //REQUISIÇÃO POR CARACTER DIGITADO
+  const filteredProducts = dataProduct.filter((item) => {
+    return (
+      (selectedCategory === "" || item.category === selectedCategory) &&
+      (searchProduct === "" || item.product.includes(searchProduct))
+    )
+  })
   // const filteredProducts =
   //   selectedCategory === ""
   //     ? dataProduct
@@ -51,7 +51,7 @@ export default function Home() {
       </div>
 
       <div>
-        <input onChange={(event)=>setSearchProduct(event.target.value)}  placeholder='Buscar produto' className='border' type="text" />
+        <input onChange={(event) => setSearchProduct(event.target.value)} placeholder='Buscar produto' className='border' type="text" />
         <button onClick={handleClickSearch}>buscar</button>
 
         <select onChange={(event) => setSelectedCategory(event.target.value)} name="" id="" className='border'>
@@ -80,7 +80,9 @@ export default function Home() {
           <tr className='border'>
             {filteredProducts.map((item) => (
               <tr className='flex justify-between mx-5'>
-                <td>{item.product}</td>
+                <NavLink to={"/product"}>
+                  <td className='cursor-pointer'>{item.product}</td>
+                </NavLink>
                 <td>{item.status}</td>
               </tr>
             ))}
