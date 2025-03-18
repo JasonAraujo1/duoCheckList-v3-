@@ -1,20 +1,26 @@
 import React, { useState } from 'react'
-import { fetchApiRegister } from '../assets/fetchApi'
+import { fetchApiIdUser, fetchApiRegister } from '../services/fetchApi'
 import { useNavigate } from 'react-router'
 
 export default function Login() {
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
+  
   const navigate = useNavigate()
 
  async function handleClick() {
-    const data = await fetchApiRegister()
+    const data = await fetchApiIdUser()
     const dataFind = data.find((item)=>item.name === name && item.password === password)
+    console.log(dataFind)
+
     if(!dataFind){
       alert("Usuário ou senha incorretos!")
     }else{
+      localStorage.setItem("idUser", dataFind.id)
+
       navigate("/home")
     }
+   
   }
 
   return (
