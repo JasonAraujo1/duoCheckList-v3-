@@ -1,7 +1,7 @@
 
-export async function fetchApiData() {
+export async function fetchApiUsers() {
    try {
-      const response = await fetch("https://67d2321e90e0670699bca29e.mockapi.io/duoCheckList/data")
+      const response = await fetch("https://67be079f321b883e790ee0ed.mockapi.io/api/v1/users")
       const data = await response.json()
       return data
    } catch (error) {

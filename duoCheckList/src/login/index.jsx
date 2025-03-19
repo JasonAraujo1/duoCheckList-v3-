@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { fetchApiIdUser, fetchApiRegister } from '../services/fetchApi'
+import { fetchApiUsers } from '../services/fetchApi'
 import { useNavigate } from 'react-router'
 
 export default function Login() {
@@ -9,7 +9,7 @@ export default function Login() {
   const navigate = useNavigate()
 
  async function handleClick() {
-    const data = await fetchApiIdUser()
+    const data = await fetchApiUsers()
     const dataFind = data.find((item)=>item.name === name && item.password === password)
     console.log(dataFind)
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 
 export default function Register() {
@@ -12,7 +12,7 @@ export default function Register() {
       name: name,
       password: password
     }
-    const url = "https://67d355c78bca322cc269d90d.mockapi.io/register/register"
+    const url = "https://67be079f321b883e790ee0ed.mockapi.io/api/v1/users"
 
     const req = await fetch(url, {
       method: "POST",

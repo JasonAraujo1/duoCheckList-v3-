@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { fetchApiData, fetchApiIdUser } from '../services/fetchApi'
+import { fetchApiIdUser } from '../services/fetchApi'
 import { NavLink, useNavigate } from 'react-router'
 
 export default function Home() {
@@ -14,33 +14,22 @@ export default function Home() {
       const idUser = localStorage.getItem("idUser")
       console.log("idUser", idUser)
       const data = await fetchApiIdUser(idUser)
-      setDataProduct(data)
+      setDataProduct(Array.isArray(data) ? data : [])
+      //Se o usuário não tem produtos, a API pode retornar algo que não é um array (como undefined, null ou {}). Quando isso acontece, o React tenta fazer dataProduct.map(...) em algo inválido, o que gera erro e quebra a página.
+      //então usamos Array.isArray() para checar se data é um array. Se for, usamos ele. Se não for, usamos um array vazio [].
 
     }
     onLoad()
   }, [])
   // console.log("teste", dataProduct)
 
-  //REQUISIÇÃO DE CLICK BUSCAR
-  function handleClickSearch() {
-    const results = dataProduct.filter((item) =>
-      item.product.toLowerCase().includes(searchProduct.toLowerCase())
-    )
-    setDataProduct(results)
-
-  }
 
   //REQUISIÇÃO POR CARACTER DIGITADO
-  const filteredProducts = dataProduct.filter((item) => {
-    return (
-      (selectedCategory === "" || item.category === selectedCategory) &&
-      (searchProduct === "" || item.product.includes(searchProduct))
-    )
-  })
-  // const filteredProducts =
-  //   selectedCategory === ""
-  //     ? dataProduct
-  //     : dataProduct.filter((item) => item.category === selectedCategory)
+
+  const filteredProducts =
+    selectedCategory === ""
+      ? dataProduct
+      : dataProduct.filter((item) => item.category === selectedCategory)
   //selectedCategory é === a vazio? se sim, filteredProduct vai ser igual a dataProduct, fazendo o map de todos os produtos. Se não, filteredProduct vai ser igual ao filtro de dataProduct pela categoria escolhida
 
   function handleClickProduct(id) {
@@ -59,7 +48,7 @@ export default function Home() {
 
       <div>
         <input onChange={(event) => setSearchProduct(event.target.value)} placeholder='Buscar produto' className='border' type="text" />
-        <button onClick={handleClickSearch}>buscar</button>
+
 
         <select onChange={(event) => setSelectedCategory(event.target.value)} className='border'>
           <option selected disabled value="">Categorias</option>
@@ -82,20 +71,23 @@ export default function Home() {
           </tr>
         </thead>
 
-        <tbody >
-
-          <tr className='border'>
-            {filteredProducts.map((item) => (
-              <tr className='flex justify-between mx-5'>
-                <NavLink to={"/product"}>
+        <tbody>
+          {filteredProducts.length === 0 ? (
+            <tr>
+              <td className="text-center">Nenhum produto encontrado.</td>
+            </tr>
+          ) : (
+            filteredProducts.map((item) => (
+              <tr key={item.id} className='flex justify-between mx-5 border'>
+                <NavLink to="/product">
                   <td onClick={() => handleClickProduct(item.id)} className='cursor-pointer'>{item.product}</td>
                 </NavLink>
                 <td>{item.status}</td>
               </tr>
-            ))}
-          </tr>
-
+            ))
+          )}
         </tbody>
+
 
       </table>
     </div>

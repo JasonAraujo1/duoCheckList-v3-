@@ -7,15 +7,17 @@ export default function NewProduct() {
   const [category, setCategory] = useState("")
   const [description, setDescription] = useState("")
   const navigate = useNavigate()
+  const idUser = localStorage.getItem("idUser")
 
   async function handleClick() {
     const data = {
       product: product,
       status: status,
       category: category,
-      description: description
+      description: description,
+      idUser:idUser
     }
-    const url = "https://67d2321e90e0670699bca29e.mockapi.io/duoCheckList/data"
+    const url = "https://67be079f321b883e790ee0ed.mockapi.io/api/v1/products"
 
     const req = await fetch(url, {
       method: "POST",
