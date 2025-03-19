@@ -71,14 +71,14 @@ export default function Home() {
           </tr>
         </thead>
 
-        <tbody>
+        <tbody className='border'>
           {filteredProducts.length === 0 ? (
             <tr>
               <td className="text-center">Nenhum produto encontrado.</td>
             </tr>
           ) : (
             filteredProducts.map((item) => (
-              <tr key={item.id} className='flex justify-between mx-5 border'>
+              <tr key={item.id} className='flex justify-between mx-5 '>
                 <NavLink to="/product">
                   <td onClick={() => handleClickProduct(item.id)} className='cursor-pointer'>{item.product}</td>
                 </NavLink>
