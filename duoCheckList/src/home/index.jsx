@@ -33,8 +33,8 @@ export default function Home() {
   //selectedCategory é === a vazio? se sim, filteredProduct vai ser igual a dataProduct, fazendo o map de todos os produtos. Se não, filteredProduct vai ser igual ao filtro de dataProduct pela categoria escolhida
 
   function handleClickProduct(id) {
-
-    console.log("ID do Produto:", id)
+    localStorage.setItem("idProduct", id)
+    // console.log("idProduct", id)
   }
   return (
     <div>

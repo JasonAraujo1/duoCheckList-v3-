@@ -27,4 +27,13 @@ export async function fetchApiIdUser(idUser) {
       console.log("erro no fetch", error)
    }
 }
+export async function fetchApiProducts() {
+   try {
+      const response = await fetch("https://67be079f321b883e790ee0ed.mockapi.io/api/v1/products")
+      const data = await response.json()
+      return data
+   } catch (error) {
+      console.log("erro no fetch", error)
+   }
+}
 
