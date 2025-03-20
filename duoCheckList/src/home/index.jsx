@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { fetchApiIdUser } from '../services/fetchApi'
-import { NavLink, useNavigate } from 'react-router'
+import { data, NavLink, useNavigate } from 'react-router'
 
 export default function Home() {
 
   const [dataProduct, setDataProduct] = useState([])
   const [searchProduct, setSearchProduct] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState("")
+  const [display, setDisplay] = useState([])
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -15,6 +15,7 @@ export default function Home() {
       console.log("idUser", idUser)
       const data = await fetchApiIdUser(idUser)
       setDataProduct(Array.isArray(data) ? data : [])
+      setDisplay(data)
       //Se o usuário não tem produtos, a API pode retornar algo que não é um array (como undefined, null ou {}). Quando isso acontece, o React tenta fazer dataProduct.map(...) em algo inválido, o que gera erro e quebra a página.
       //então usamos Array.isArray() para checar se data é um array. Se for, usamos ele. Se não for, usamos um array vazio [].
 
@@ -23,19 +24,24 @@ export default function Home() {
   }, [])
   // console.log("teste", dataProduct)
 
+  function handleChange({ target }) {
+    setSearchProduct(target.value)
+    const filterInput = dataProduct.filter((item)=> item.product.includes(searchProduct))
+    setDisplay(filterInput)
+  }
 
-  //REQUISIÇÃO POR CARACTER DIGITADO
+  function handleSelect({ target }) {
+    const filterInput = dataProduct.filter((item)=> item.category === target.value)
+    setDisplay(filterInput)
+  }
 
-  const filteredProducts =
-    selectedCategory === ""
-      ? dataProduct
-      : dataProduct.filter((item) => item.category === selectedCategory)
-  //selectedCategory é === a vazio? se sim, filteredProduct vai ser igual a dataProduct, fazendo o map de todos os produtos. Se não, filteredProduct vai ser igual ao filtro de dataProduct pela categoria escolhida
-
+  
+  
   function handleClickProduct(id) {
     localStorage.setItem("idProduct", id)
     // console.log("idProduct", id)
   }
+  
   return (
     <div>
 
@@ -47,11 +53,11 @@ export default function Home() {
       </div>
 
       <div>
-        <input onChange={(event) => setSearchProduct(event.target.value)} placeholder='Buscar produto' className='border' type="text" />
+        <input value={searchProduct} onChange={handleChange} placeholder='Buscar produto' className='border' type="text" />
 
 
-        <select onChange={(event) => setSelectedCategory(event.target.value)} className='border'>
-          <option selected disabled value="">Categorias</option>
+        <select onChange={handleSelect} className='border'>
+          <option selected disabled value="categorias">Categorias</option>
           <option value="Sala">Sala</option>
           <option value="Quarto">Quarto</option>
           <option value="Banheiro">Banheiro</option>
@@ -72,12 +78,12 @@ export default function Home() {
         </thead>
 
         <tbody className='border'>
-          {filteredProducts.length === 0 ? (
+          {display.length === 0 ? (
             <tr>
               <td className="text-center">Nenhum produto encontrado.</td>
             </tr>
           ) : (
-            filteredProducts.map((item) => (
+            display.map((item) => (
               <tr key={item.id} className='flex justify-between mx-5 '>
                 <NavLink to="/product">
                   <td onClick={() => handleClickProduct(item.id)} className='cursor-pointer'>{item.product}</td>
