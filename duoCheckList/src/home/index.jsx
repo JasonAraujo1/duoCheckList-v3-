@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { fetchApiIdUser } from '../services/fetchApi'
-import { data, NavLink, useNavigate } from 'react-router'
+import { NavLink, useNavigate } from 'react-router'
 
 export default function Home() {
 
@@ -47,10 +47,10 @@ export default function Home() {
   function handleSelectStatus({ target }) {
     const filterStatus = dataProduct.filter((item) => item.status === target.value)
     setDisplay(filterStatus)
-    if(target.value === "Todos"){
+    if (target.value === "Todos") {
       setDisplay(dataProduct)
     }
-    else{option.value = "Status"}
+    else { option.value = "Status" }
   }
 
   return (
@@ -58,7 +58,7 @@ export default function Home() {
 
       <div>
         <NavLink to="/new">
-          <button>Adicionar</button>
+        
         </NavLink>
 
       </div>
