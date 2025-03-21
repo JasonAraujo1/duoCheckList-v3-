@@ -26,22 +26,24 @@ export default function Home() {
 
   function handleChange({ target }) {
     setSearchProduct(target.value)
-    const filterInput = dataProduct.filter((item)=> item.product.includes(searchProduct))
+    const filterInput = dataProduct.filter((item) => item.product.includes(searchProduct))
     setDisplay(filterInput)
   }
 
   function handleSelect({ target }) {
-    const filterInput = dataProduct.filter((item)=> item.category === target.value)
+    const filterInput = dataProduct.filter((item) => item.category === target.value)
     setDisplay(filterInput)
+    if (target.value === "Todos") {
+      setDisplay(dataProduct)
+    }
   }
 
-  
-  
+
   function handleClickProduct(id) {
     localStorage.setItem("idProduct", id)
     // console.log("idProduct", id)
   }
-  
+
   return (
     <div>
 
@@ -54,26 +56,33 @@ export default function Home() {
 
       <div>
         <input value={searchProduct} onChange={handleChange} placeholder='Buscar produto' className='border' type="text" />
-
-
-        <select onChange={handleSelect} className='border'>
-          <option selected disabled value="categorias">Categorias</option>
-          <option value="Sala">Sala</option>
-          <option value="Quarto">Quarto</option>
-          <option value="Banheiro">Banheiro</option>
-          <option value="Lavanderia">Lavanderia</option>
-          <option value="Escritório">Escritório</option>
-          <option value="Quintal/Jardim">Quintal/Jardim</option>
-          <option value="Varanda/Sacada">Varanda/Sacada</option>
-          <option value="Cozinha">Cozinha</option>
-        </select>
       </div>
 
       <table className=' w-sm'>
         <thead className='border '>
           <tr className=' flex justify-between mx-5'>
             <th>Todos</th>
-            <th>Status</th>
+            <th>
+              <select onChange={handleSelect} >
+                <option selected disabled value="categorias">Categorias</option>
+                <option value="Sala">Sala</option>
+                <option value="Quarto">Quarto</option>
+                <option value="Banheiro">Banheiro</option>
+                <option value="Lavanderia">Lavanderia</option>
+                <option value="Escritório">Escritório</option>
+                <option value="Quintal/Jardim">Quintal/Jardim</option>
+                <option value="Varanda/Sacada">Varanda/Sacada</option>
+                <option value="Cozinha">Cozinha</option>
+                <option value="Todos">Todos</option>
+              </select>
+            </th>
+            <th>
+              <select>
+                <option selected disabled value="categorias">Status</option>
+                <option value="Adquirido">Adquirido</option>
+                <option value="Nao Adquirido">Não Adquirido</option>
+              </select>
+            </th>
           </tr>
         </thead>
 
@@ -88,6 +97,7 @@ export default function Home() {
                 <NavLink to="/product">
                   <td onClick={() => handleClickProduct(item.id)} className='cursor-pointer'>{item.product}</td>
                 </NavLink>
+                <td>{item.category}</td>
                 <td>{item.status}</td>
               </tr>
             ))
