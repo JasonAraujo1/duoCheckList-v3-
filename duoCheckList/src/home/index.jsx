@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { fetchApiIdUser } from '../services/fetchApi'
 import { NavLink, useNavigate } from 'react-router'
+import Plus from '../assets/plusIcon.svg';
 
 export default function Home() {
 
@@ -58,7 +59,7 @@ export default function Home() {
 
       <div>
         <NavLink to="/new">
-        
+           <img src={Plus} alt="" className=''/>
         </NavLink>
 
       </div>
