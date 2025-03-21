@@ -44,6 +44,15 @@ export default function Home() {
     // console.log("idProduct", id)
   }
 
+  function handleSelectStatus({ target }) {
+    const filterStatus = dataProduct.filter((item) => item.status === target.value)
+    setDisplay(filterStatus)
+    if(target.value === "Todos"){
+      setDisplay(dataProduct)
+    }
+    else{option.value = "Status"}
+  }
+
   return (
     <div>
 
@@ -77,10 +86,11 @@ export default function Home() {
               </select>
             </th>
             <th>
-              <select>
+              <select onChange={handleSelectStatus}>
                 <option selected disabled value="categorias">Status</option>
                 <option value="Adquirido">Adquirido</option>
-                <option value="Nao Adquirido">Não Adquirido</option>
+                <option value="Não Adquirido">Não Adquirido</option>
+                <option value="Todos">Todos</option>
               </select>
             </th>
           </tr>
@@ -93,13 +103,16 @@ export default function Home() {
             </tr>
           ) : (
             display.map((item) => (
-              <tr key={item.id} className='flex justify-between mx-5 '>
-                <NavLink to="/product">
-                  <td onClick={() => handleClickProduct(item.id)} className='cursor-pointer'>{item.product}</td>
-                </NavLink>
+              <tr key={item.id} className='flex justify-between mx-5'>
+                <td className='cursor-pointer'>
+                  <NavLink to="/product" onClick={() => handleClickProduct(item.id)}>
+                    {item.product}
+                  </NavLink>
+                </td>
                 <td>{item.category}</td>
                 <td>{item.status}</td>
               </tr>
+
             ))
           )}
         </tbody>
