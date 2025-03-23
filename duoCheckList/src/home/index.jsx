@@ -59,7 +59,7 @@ export default function Home() {
 
       <div>
         <NavLink to="/new">
-           <img src={Plus} alt="" className=''/>
+           <img src={Plus} alt="" className='border bg-red-50'/>
         </NavLink>
 
       </div>
