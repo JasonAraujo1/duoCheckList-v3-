@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { fetchApiIdUser } from '../services/fetchApi'
-import { NavLink, useNavigate } from 'react-router'
-import Plus from '../assets/plusIcon.svg';
+import { NavLink } from 'react-router'
+import plus from '../assets/plus.svg';
+import search from '../assets/search.svg';
 
 export default function Home() {
 
   const [dataProduct, setDataProduct] = useState([])
   const [searchProduct, setSearchProduct] = useState("")
   const [display, setDisplay] = useState([])
-  const navigate = useNavigate()
 
   useEffect(() => {
     async function onLoad() {
@@ -57,69 +57,73 @@ export default function Home() {
   return (
     <div>
 
-      <div>
+      <div className='flex'>
         <NavLink to="/new">
-           <img src={Plus} alt="" className='border bg-red-50'/>
+          <img src={plus} alt="" className='' />
+          <span className='text-gray-400 text-sm'>Novo</span>
         </NavLink>
 
       </div>
 
       <div>
-        <input value={searchProduct} onChange={handleChange} placeholder='Buscar produto' className='border' type="text" />
+        <img src={search} alt="" className='' />
+        <input value={searchProduct} onChange={handleChange} placeholder='Buscar produto'
+          className='bg-neutral-100 text-center' type="text" />
       </div>
 
-      <table className=' w-sm'>
-        <thead className='border '>
-          <tr className=' flex justify-between mx-5'>
-            <th>Todos</th>
-            <th>
-              <select onChange={handleSelect} >
-                <option selected disabled value="categorias">Categorias</option>
-                <option value="Sala">Sala</option>
-                <option value="Quarto">Quarto</option>
-                <option value="Banheiro">Banheiro</option>
-                <option value="Lavanderia">Lavanderia</option>
-                <option value="Escritório">Escritório</option>
-                <option value="Quintal/Jardim">Quintal/Jardim</option>
-                <option value="Varanda/Sacada">Varanda/Sacada</option>
-                <option value="Cozinha">Cozinha</option>
-                <option value="Todos">Todos</option>
-              </select>
-            </th>
-            <th>
-              <select onChange={handleSelectStatus}>
-                <option selected disabled value="categorias">Status</option>
-                <option value="Adquirido">Adquirido</option>
-                <option value="Não Adquirido">Não Adquirido</option>
-                <option value="Todos">Todos</option>
-              </select>
-            </th>
-          </tr>
-        </thead>
-
-        <tbody className='border'>
-          {display.length === 0 ? (
+      <div className="overflow-x-auto max-w-full">
+        <table className="min-w-full border text-sm md:text-base">
+          <thead className='border'>
             <tr>
-              <td className="text-center">Nenhum produto encontrado.</td>
+              <th className="px-2 py-2">Todos</th>
+              <th className="px-2 py-2">
+                <select onChange={handleSelect} className="border rounded px-1 py-1 text-xs md:text-sm">
+                  <option selected disabled value="categorias">Categorias</option>
+                  <option value="Sala">Sala</option>
+                  <option value="Quarto">Quarto</option>
+                  <option value="Banheiro">Banheiro</option>
+                  <option value="Lavanderia">Lavanderia</option>
+                  <option value="Escritório">Escritório</option>
+                  <option value="Quintal/Jardim">Quintal/Jardim</option>
+                  <option value="Varanda/Sacada">Varanda/Sacada</option>
+                  <option value="Cozinha">Cozinha</option>
+                  <option value="Todos">Todos</option>
+                </select>
+              </th>
+              <th className="px-2 py-2">
+                <select onChange={handleSelectStatus} className="border rounded px-1 py-1 text-xs md:text-sm">
+                  <option selected disabled value="categorias">Status</option>
+                  <option value="Adquirido">Adquirido</option>
+                  <option value="Não Adquirido">Não Adquirido</option>
+                  <option value="Todos">Todos</option>
+                </select>
+              </th>
             </tr>
-          ) : (
-            display.map((item) => (
-              <tr key={item.id} className='flex justify-between mx-5'>
-                <td className='cursor-pointer'>
-                  <NavLink to="/product" onClick={() => handleClickProduct(item.id)}>
-                    {item.product}
-                  </NavLink>
-                </td>
-                <td>{item.category}</td>
-                <td>{item.status}</td>
+          </thead>
+
+          <tbody className='border'>
+            {display.length === 0 ? (
+              <tr>
+                <td colSpan="3" className="text-center py-2">Nenhum produto encontrado.</td>
               </tr>
+            ) : (
+              display.map((item) => (
+                <tr key={item.id} className="hover:bg-gray-100">
+                  <td className='cursor-pointer px-2 py-1'>
+                    <NavLink to="/product" onClick={() => handleClickProduct(item.id)} className="text-blue-600 hover:underline">
+                      {item.product}
+                    </NavLink>
+                  </td>
+                  <td className='px-2 py-1'>{item.category}</td>
+                  <td className='px-2 py-1'>{item.status}</td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
 
-            ))
-          )}
-        </tbody>
 
-
-      </table>
     </div>
   )
 }
