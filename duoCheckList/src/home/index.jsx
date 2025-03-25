@@ -60,7 +60,7 @@ export default function Home() {
 
       <div className='flex mb-8'>
         <NavLink to="/new">
-          <img src={plus} alt="" className='size-15' />
+          <img src={plus} alt="" className='size-15 hover:' />
           <span className='text-gray-400 text-sm'>Novo</span>
         </NavLink>
 
@@ -68,19 +68,19 @@ export default function Home() {
       <div className='flex flex-col items-center'>
 
 
-        <div className='bg-neutral-100 flex p-2 rounded-xl justify-center w-full max-w-80 mb-5'>
+        <div className='bg-neutral-100 flex p-2 rounded-lg justify-center w-full max-w-80 mb-8 gap-4'>
           <img src={search} alt="" className='size-7 ' />
           <input value={searchProduct} onChange={handleChange} placeholder='Buscar Produto...'
-            className=' text-center outline-0' type="text" />
+            className='  outline-0' type="text" />
         </div>
 
         <div className="overflow-x-auto max-w-full">
           <table className="min-w-full text-sm md:text-base">
             <thead className='border-b-2 border-b-red-400 '>
-              <tr>
+              <tr >
                 <th className="px-2 py-2 text-red-400 text-base">Todos</th>
-                <th className="px-2 py-2">
-                  <select onChange={handleSelect} className="text-red-400  rounded px-1 py-1 text-xs md:text-sm">
+                <th className="px-2 py-2 ">
+                  <select onChange={handleSelect} className="text-red-400  rounded px-1 py-1 w-full text-base md:text-sm">
                     <option selected disabled value="categorias">Categorias</option>
                     <option value="Sala">Sala</option>
                     <option value="Quarto">Quarto</option>
@@ -94,7 +94,7 @@ export default function Home() {
                   </select>
                 </th>
                 <th className="px-2 py-2">
-                  <select onChange={handleSelectStatus} className="text-red-400 rounded px-1 py-1 text-xs md:text-sm">
+                  <select onChange={handleSelectStatus} className="text-red-400 rounded px-1 py-1 w-full  text-base md:text-sm">
                     <option selected disabled value="categorias">Status</option>
                     <option value="Adquirido">Adquirido</option>
                     <option value="Não Adquirido">Não Adquirido</option>
@@ -111,15 +111,19 @@ export default function Home() {
                 </tr>
               ) : (
                 display.map((item) => (
-                  <tr key={item.id} className="hover:bg-gray-100">
-                    <td className='cursor-pointer px-2 py-1'>
-                      <NavLink to="/product" onClick={() => handleClickProduct(item.id)} className="text-blue-600 hover:underline">
+                  <tr key={item.id} className="hover:bg-gray-100 ">
+                    <td className='cursor-pointer px-2 py-3 border-b border-gray-300 text-base font-medium'>
+                      <NavLink to="/product" onClick={() => handleClickProduct(item.id)} className=" ">
                         {item.product}
                       </NavLink>
                     </td>
-                    <td className='px-2 py-1'>{item.category}</td>
-                    <td className='px-2 py-1'>{item.status}</td>
-                  </tr>
+                    <td className='px-2 py-1 border-b font-light text-neutral-500 border-gray-300'>{item.category}</td>
+                    <td
+                      className={`px-2 py-1 border-b  text-sm font-semibold border-gray-300 ${item.status === 'Não Adquirido' ? 'text-amber-500' : 'text-lime-500'
+                        }`}
+                    >
+                      {item.status}
+                    </td>                  </tr>
                 ))
               )}
             </tbody>
