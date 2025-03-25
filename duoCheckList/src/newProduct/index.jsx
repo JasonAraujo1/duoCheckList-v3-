@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { NavLink, useNavigate } from "react-router"
+import arrow from '../assets/arrow.svg'
 
 export default function NewProduct() {
   const [product, setProduct] = useState("")
@@ -15,7 +16,7 @@ export default function NewProduct() {
       status: status,
       category: category,
       description: description,
-      idUser:idUser
+      idUser: idUser
     }
     const url = "https://67be079f321b883e790ee0ed.mockapi.io/api/v1/products"
 
@@ -41,46 +42,63 @@ export default function NewProduct() {
 
     <div>
       <NavLink to={"/home"}>
-        <button className='text-red-600'>←</button>
+        <img src={arrow} alt="" className='size-9' />
       </NavLink>
 
-      <p className='font-bold'>Novo produto</p>
+      <div className="flex flex-col gap-5 text-start">
+        <p className='font-bold py-16 text-base' >Novo produto</p>
 
-      <div>
-        Produto
-        <input onChange={(event) => setProduct(event.target.value)} className='border' type="text" />
+        <div >
+          <span>
+            Produto
+          </span>
+
+          <input placeholder="Nome do Produto" onChange={(event) => setProduct(event.target.value)} className='mx-5 border border-gray-300 rounded-md w-full max-w-48' type="text" />
+        </div>
+
+        <div>
+          <span>
+            Status
+          </span>
+
+          <select onChange={(event) => setStatus(event.target.value)} className='mx-5 border w-full max-w-48 border-gray-300 rounded-md'>
+            <option selected disabled value="">Status</option>
+            <option value="Adquirido">Adquirido</option>
+            <option value="Não Adquirido">Não Adquirido</option>
+          </select>
+        </div>
+
+        <div>
+          <span>
+            Categoria
+          </span>
+          <select onChange={(event) => setCategory(event.target.value)} name="" id="" className='mx-5 border  border-gray-300 rounded-md'>
+            <option selected disabled value="">Categorias</option>
+            <option value="Sala">Sala</option>
+            <option value="Quarto">Quarto</option>
+            <option value="Banheiro">Banheiro</option>
+            <option value="Lavanderia">Lavanderia</option>
+            <option value="Escritório">Escritório</option>
+            <option value="Quintal/Jardim">Quintal/Jardim</option>
+            <option value="Varanda/Sacada">Varanda/Sacada</option>
+            <option value="Cozinha">Cozinha</option>
+          </select>
+        </div>
+
+        <div className="flex">
+          <span>Descrição</span>
+          <textarea
+            onChange={(event) => setDescription(event.target.value)}
+            className='mx-5 border border-gray-300 rounded-md p-3'
+            rows="4"
+            style={{ wordWrap: 'break-word' }}
+          />
+
+        </div>
+
+        <button className="bg-red-400 text-white font-bold rounded-lg py-2" onClick={handleClick}>Adicionar</button>
       </div>
 
-      <div>
-        Status
-        <select onChange={(event) => setStatus(event.target.value)} className='border'>
-          <option selected disabled value="">Categorias</option>
-          <option value="Adquirido">Adquirido</option>
-          <option value="Não Adquirido">Não Adquirido</option>
-        </select>
-      </div>
-
-      <div>
-        Categoria
-        <select onChange={(event) => setCategory(event.target.value)} name="" id="" className='border'>
-          <option selected disabled value="">Categorias</option>
-          <option value="Sala">Sala</option>
-          <option value="Quarto">Quarto</option>
-          <option value="Banheiro">Banheiro</option>
-          <option value="Lavanderia">Lavanderia</option>
-          <option value="Escritório">Escritório</option>
-          <option value="Quintal/Jardim">Quintal/Jardim</option>
-          <option value="Varanda/Sacada">Varanda/Sacada</option>
-          <option value="Cozinha">Cozinha</option>
-        </select>
-      </div>
-
-      <div>
-        Descrição
-        <input onChange={(event) => setDescription(event.target.value)} className='border' type="text" />
-      </div>
-
-      <button onClick={handleClick}>Enviar</button>
     </div>
   )
 }
