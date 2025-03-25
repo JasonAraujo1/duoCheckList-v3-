@@ -45,34 +45,34 @@ export default function NewProduct() {
         <img src={arrow} alt="" className='size-9' />
       </NavLink>
 
-      <div className="flex flex-col gap-5 text-start">
-        <p className='font-bold py-16 text-base' >Novo produto</p>
+      <div className="flex flex-col gap-8 text-start">
+        <p className='font-bold py-16 text-base flex  justify-center' >Novo produto</p>
 
         <div >
           <span>
             Produto
           </span>
 
-          <input placeholder="Nome do Produto" onChange={(event) => setProduct(event.target.value)} className='mx-5 border border-gray-300 rounded-md w-full max-w-48' type="text" />
+          <input placeholder="Nome do Produto" onChange={(event) => setProduct(event.target.value)} className='p-1 mx-8 border border-gray-300 rounded-md  w-48' type="text" />
         </div>
 
         <div>
-          <span>
+          <span className="">
             Status
           </span>
 
-          <select onChange={(event) => setStatus(event.target.value)} className='mx-5 border w-full max-w-48 border-gray-300 rounded-md'>
+          <select onChange={(event) => setStatus(event.target.value)} className='p-1 mx-11 border w-48 border-gray-300 rounded-md'>
             <option selected disabled value="">Status</option>
             <option value="Adquirido">Adquirido</option>
             <option value="Não Adquirido">Não Adquirido</option>
           </select>
         </div>
 
-        <div>
-          <span>
+        <div className="">
+          <span className="">
             Categoria
           </span>
-          <select onChange={(event) => setCategory(event.target.value)} name="" id="" className='mx-5 border  border-gray-300 rounded-md'>
+          <select onChange={(event) => setCategory(event.target.value)} name="" id="" className='p-1 mx-4 w-48 border  border-gray-300 rounded-md '>
             <option selected disabled value="">Categorias</option>
             <option value="Sala">Sala</option>
             <option value="Quarto">Quarto</option>
@@ -89,14 +89,14 @@ export default function NewProduct() {
           <span>Descrição</span>
           <textarea
             onChange={(event) => setDescription(event.target.value)}
-            className='mx-5 border border-gray-300 rounded-md p-3'
+            className='mx-4 border border-gray-300 rounded-md p-3'
             rows="4"
             style={{ wordWrap: 'break-word' }}
           />
 
         </div>
 
-        <button className="bg-red-400 text-white font-bold rounded-lg py-2" onClick={handleClick}>Adicionar</button>
+        <button className=" my-20 bg-red-400 text-white font-bold rounded-lg py-2" onClick={handleClick}>Adicionar</button>
       </div>
 
     </div>
