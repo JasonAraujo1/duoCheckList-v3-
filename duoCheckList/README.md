@@ -1,5 +1,7 @@
 # Duo Checklist
 
+<img src="src\assets\print.PNG"></img>
+
 Duo Checklist é uma aplicação para gerenciamento de tarefas em dupla, permitindo a criação e acompanhamento de checklists compartilhados.
 
 ## Tecnologias Utilizadas
