@@ -40,7 +40,7 @@ export default function NewProduct() {
 
 
 
-    <div>
+    <div >
       <NavLink to={"/home"}>
         <img src={arrow} alt="" className='size-9' />
       </NavLink>

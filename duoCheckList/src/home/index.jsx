@@ -55,8 +55,7 @@ export default function Home() {
   }
 
   return (
-    <div>
-
+    <div >
 
       <div className='flex mb-8'>
         <NavLink to="/new">
@@ -123,7 +122,8 @@ export default function Home() {
                         }`}
                     >
                       {item.status}
-                    </td>                  </tr>
+                    </td>
+                  </tr>
                 ))
               )}
             </tbody>

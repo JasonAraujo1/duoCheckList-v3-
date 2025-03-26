@@ -29,7 +29,7 @@ export default function DataProduct() {
   console.log("produto filtrado", filteredProduct);
 
   return (
-    <div>
+    <div className='w-80'>
       <NavLink to={"/home"}>
         <img src={arrow} alt="" className='size-9' />
       </NavLink>
