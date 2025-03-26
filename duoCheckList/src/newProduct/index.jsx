@@ -40,7 +40,7 @@ export default function NewProduct() {
 
 
 
-    <div >
+    <div className="md:w-200 " >
       <NavLink to={"/home"}>
         <img src={arrow} alt="" className='size-9' />
       </NavLink>
@@ -96,7 +96,7 @@ export default function NewProduct() {
 
         </div>
 
-        <button className=" my-20 bg-red-400 text-white font-bold rounded-lg py-2" onClick={handleClick}>Adicionar</button>
+        <button className=" my-20 bg-red-400 text-white font-bold rounded-lg py-2 md:w-80" onClick={handleClick}>Adicionar</button>
       </div>
 
     </div>

@@ -55,7 +55,7 @@ export default function Home() {
   }
 
   return (
-    <div >
+    <div  className='w-full sm:w-10 md:w-200'>
 
       <div className='flex mb-8'>
         <NavLink to="/new">
@@ -74,7 +74,7 @@ export default function Home() {
         </div>
 
         <div className="overflow-x-auto max-w-full">
-          <table className="min-w-full text-sm md:text-base">
+          <table className="min-w-full text-sm md:text-base md:w-200">
             <thead className='border-b-2 border-b-red-400 '>
               <tr >
                 <th className="px-2 py-2 text-red-400 text-base">Todos</th>

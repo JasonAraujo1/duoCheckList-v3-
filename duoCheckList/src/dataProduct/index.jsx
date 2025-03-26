@@ -29,7 +29,7 @@ export default function DataProduct() {
   console.log("produto filtrado", filteredProduct);
 
   return (
-    <div className='w-80'>
+    <div className=' w-full sm:w-80 md:w-200'>
       <NavLink to={"/home"}>
         <img src={arrow} alt="" className='size-9' />
       </NavLink>
@@ -40,7 +40,7 @@ export default function DataProduct() {
           <p>Nenhum produto encontrado.</p>
         ) : (
           filteredProduct.map((item) => (
-            <table key={item.id} className="w-full sm:w-auto mb-8  table-auto ">
+            <table key={item.id} className="w-full sm:w-auto md:w-200 mb-8  table-auto ">
               <tbody >
                 <tr className="border  border-gray-200">
                   <td className="px-4 py-2 bg-gray-100">Nome</td>
