@@ -61,9 +61,9 @@ export default function Register() {
         <input onChange={(event) => setRepeatPassword(event.target.value)} className='border-b-2 border-gray-200 w-full outline-0' type="password" placeholder='Sua senha' />
       </div>
       <div>
-        <button className=" my-10 bg-red-400 text-white font-bold rounded-lg py-2  md:w-80" onClick={handleClick}>Enviar</button>
+        <button className=" my-10 bg-red-400 text-white font-bold rounded-lg py-2  w-80" onClick={handleClick}>Enviar</button>
       </div>
-      <span className='text-gray-400 font-semibold'>Já possui conta?
+      <span className='text-gray-400 font-medium'>Já possui conta?
         <NavLink to={'/login'}>
           <span className='text-red-400 font-bold'> Login</span>
         </NavLink>

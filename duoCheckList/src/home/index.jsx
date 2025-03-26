@@ -3,6 +3,7 @@ import { fetchApiIdUser } from '../services/fetchApi'
 import { NavLink } from 'react-router'
 import plus from '../assets/plus.svg';
 import search from '../assets/search.svg';
+import logout from '../assets/logout.svg';
 
 export default function Home() {
 
@@ -57,12 +58,16 @@ export default function Home() {
   return (
     <div  className='w-full sm:w-10 md:w-200'>
 
-      <div className='flex mb-8'>
+      <div className='flex mb-8 justify-between items-center'>
         <NavLink to="/new">
           <img src={plus} alt="" className='size-15 hover:' />
           <span className='text-gray-400 text-sm'>Novo</span>
         </NavLink>
-
+        <NavLink to="/login">
+          <img src={logout} alt="" className='size-8 hover:' />
+          <span className='text-gray-400 text-sm'>Sair</span>
+        </NavLink>
+        
       </div>
       <div className='flex flex-col items-center'>
 
