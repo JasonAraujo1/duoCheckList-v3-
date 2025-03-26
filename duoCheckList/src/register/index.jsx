@@ -35,7 +35,7 @@ export default function Register() {
   }
 
   return (
-    <div className='flex flex-col gap-6 w-80'>
+    <div className='flex flex-col gap-6  md:w-200'>
       <div className='flex flex-col items-center m-9'>
         <img src={checkList} alt="" className='size-20' />
         <p className='font-bold text-gray-400'>Duo CheckList</p>
@@ -60,8 +60,9 @@ export default function Register() {
         <span className='text-red-400 font-bold text-base py-2'>Repetir senha: </span>
         <input onChange={(event) => setRepeatPassword(event.target.value)} className='border-b-2 border-gray-200 w-full outline-0' type="password" placeholder='Sua senha' />
       </div>
-
-      <button className=" my-10 bg-red-400 text-white font-bold rounded-lg py-2" onClick={handleClick}>Enviar</button>
+      <div>
+        <button className=" my-10 bg-red-400 text-white font-bold rounded-lg py-2  md:w-80" onClick={handleClick}>Enviar</button>
+      </div>
       <span className='text-gray-400 font-semibold'>Já possui conta?
         <NavLink to={'/login'}>
           <span className='text-red-400 font-bold'> Login</span>

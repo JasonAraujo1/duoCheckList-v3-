@@ -40,63 +40,71 @@ export default function NewProduct() {
 
 
 
-    <div className="md:w-200 " >
+    <div className='flex flex-col gap-6  md:w-200'>
       <NavLink to={"/home"}>
         <img src={arrow} alt="" className='size-9' />
       </NavLink>
 
-      <div className="flex flex-col gap-8 text-start">
-        <p className='font-bold py-16 text-base flex  justify-center' >Novo produto</p>
+      <div className='flex flex-col  w-80 md:w-200'>
 
-        <div >
-          <span>
-            Produto
-          </span>
+        <div className='flex flex-col gap-6  md:w-200' >
+          <div className='flex flex-col items-start gap-4'>
+            <p className='font-bold text-3xl'>Novo Produto</p>
+            <span className='text-gray-400 text-lg font-medium '>Preencha os campos para adicionar </span>
+          </div>
 
-          <input placeholder="Nome do Produto" onChange={(event) => setProduct(event.target.value)} className='p-1 mx-8 border border-gray-300 rounded-md  w-48' type="text" />
+          <div className='flex flex-col items-start '>
+            <span className='text-red-400 font-bold text-base py-2'>
+              Produto
+            </span>
+            <input className='border-b-2 border-gray-200 w-full outline-0' placeholder="Nome do Produto" onChange={(event) => setProduct(event.target.value)} type="text" />
+          </div>
+
+          <div className='flex flex-col items-start'>
+            <span className='text-red-400 font-bold text-base py-2'>
+              Status
+            </span>
+
+            <select className='border-b-2 border-gray-200 w-full outline-0 text-gray-400' onChange={(event) => setStatus(event.target.value)} >
+              <option selected disabled value="">Status</option>
+              <option value="Adquirido">Adquirido</option>
+              <option value="Não Adquirido">Não Adquirido</option>
+            </select>
+          </div>
+
+          <div className='flex flex-col items-start '>
+            <span className='text-red-400 font-bold text-base py-2'>
+              Categoria
+            </span>
+            <select className='border-b-2 border-gray-200 w-full outline-0 text-gray-400' onChange={(event) => setCategory(event.target.value)} name="" id="" >
+              <option selected disabled value="">Categorias</option>
+              <option value="Sala">Sala</option>
+              <option value="Quarto">Quarto</option>
+              <option value="Banheiro">Banheiro</option>
+              <option value="Lavanderia">Lavanderia</option>
+              <option value="Escritório">Escritório</option>
+              <option value="Quintal/Jardim">Quintal/Jardim</option>
+              <option value="Varanda/Sacada">Varanda/Sacada</option>
+              <option value="Cozinha">Cozinha</option>
+            </select>
+          </div>
+
+          <div className='flex flex-col items-start '>
+            <span className='text-red-400 font-bold text-base py-2'>Descrição</span>
+            <textarea
+              onChange={(event) => setDescription(event.target.value)}
+
+              rows="4"
+              style={{ wordWrap: 'break-word' }}
+              className='border border-gray-300 w-full'
+              placeholder="Adicione sua descrição..."
+            />
+
+          </div>
+
+          <button className=" my-20 bg-red-400 text-white font-bold rounded-lg py-2 md:w-80" onClick={handleClick}>Adicionar</button>
         </div>
 
-        <div>
-          <span className="">
-            Status
-          </span>
-
-          <select onChange={(event) => setStatus(event.target.value)} className='p-1 mx-11 border w-48 border-gray-300 rounded-md'>
-            <option selected disabled value="">Status</option>
-            <option value="Adquirido">Adquirido</option>
-            <option value="Não Adquirido">Não Adquirido</option>
-          </select>
-        </div>
-
-        <div className="">
-          <span className="">
-            Categoria
-          </span>
-          <select onChange={(event) => setCategory(event.target.value)} name="" id="" className='p-1 mx-4 w-48 border  border-gray-300 rounded-md '>
-            <option selected disabled value="">Categorias</option>
-            <option value="Sala">Sala</option>
-            <option value="Quarto">Quarto</option>
-            <option value="Banheiro">Banheiro</option>
-            <option value="Lavanderia">Lavanderia</option>
-            <option value="Escritório">Escritório</option>
-            <option value="Quintal/Jardim">Quintal/Jardim</option>
-            <option value="Varanda/Sacada">Varanda/Sacada</option>
-            <option value="Cozinha">Cozinha</option>
-          </select>
-        </div>
-
-        <div className="flex">
-          <span>Descrição</span>
-          <textarea
-            onChange={(event) => setDescription(event.target.value)}
-            className='mx-4 border border-gray-300 rounded-md p-3'
-            rows="4"
-            style={{ wordWrap: 'break-word' }}
-          />
-
-        </div>
-
-        <button className=" my-20 bg-red-400 text-white font-bold rounded-lg py-2 md:w-80" onClick={handleClick}>Adicionar</button>
       </div>
 
     </div>
