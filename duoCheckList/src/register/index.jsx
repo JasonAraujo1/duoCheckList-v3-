@@ -48,7 +48,7 @@ export default function Register() {
 
       <div className='flex flex-col items-start '>
         <span className='text-red-400 font-bold text-base py-2'>Nome de usuário: </span>
-        <input onChange={(event) => setName(event.target.value)} className='border-b-2 border-gray-200 w-full outline-0' type="text" placeholder='Fulano de Tal' />
+        <input onChange={(event) => setName(event.target.value)} className='border-b-2 border-gray-200 w-full outline-0' type="text" placeholder='ex: fulano de Tal' />
       </div>
 
       <div className='flex flex-col items-start'>
@@ -61,7 +61,7 @@ export default function Register() {
         <input onChange={(event) => setRepeatPassword(event.target.value)} className='border-b-2 border-gray-200 w-full outline-0' type="password" placeholder='Sua senha' />
       </div>
       <div>
-        <button className=" my-10 bg-red-400 text-white font-bold rounded-lg py-2  w-80" onClick={handleClick}>Enviar</button>
+        <button className="cursor-pointer my-10 bg-red-400 text-white font-bold rounded-lg py-2  w-80" onClick={handleClick}>Enviar</button>
       </div>
       <span className='text-gray-400 font-medium'>Já possui conta?
         <NavLink to={'/login'}>

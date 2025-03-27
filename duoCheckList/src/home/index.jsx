@@ -84,7 +84,7 @@ export default function Home() {
               <tr >
                 <th className="px-2 py-2 text-red-400 text-base">Todos</th>
                 <th className="px-2 py-2 ">
-                  <select onChange={handleSelect} className="text-red-400  rounded px-1 py-1 w-full text-base md:text-sm">
+                  <select onChange={handleSelect} className="text-red-400  rounded px-1 py-1 w-full text-base md:text-sm outline-0">
                     <option selected disabled value="categorias">Categorias</option>
                     <option value="Sala">Sala</option>
                     <option value="Quarto">Quarto</option>
@@ -98,11 +98,11 @@ export default function Home() {
                   </select>
                 </th>
                 <th className="px-2 py-2">
-                  <select onChange={handleSelectStatus} className="text-red-400 rounded px-1 py-1 w-full  text-base md:text-sm">
-                    <option selected disabled value="categorias">Status</option>
-                    <option value="Adquirido">Adquirido</option>
-                    <option value="Não Adquirido">Não Adquirido</option>
-                    <option value="Todos">Todos</option>
+                  <select onChange={handleSelectStatus} className="text-red-400 rounded px-1 py-1 w-full  text-base md:text-sm outline-0">
+                    <option className='outline-0' selected disabled value="categorias">Status</option>
+                    <option className='outline-0' value="Adquirido">Adquirido</option>
+                    <option className='outline-0' value="Não Adquirido">Não Adquirido</option>
+                    <option className='outline-0' value="Todos">Todos</option>
                   </select>
                 </th>
               </tr>

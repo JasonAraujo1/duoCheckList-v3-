@@ -100,7 +100,7 @@ export default function NewProduct() {
 
         </div>
         <div>
-          <button className=" my-20 bg-red-400 text-white font-bold rounded-lg py-2 md:w-80" onClick={handleClick}>Adicionar</button>
+          <button className="cursor-pointer my-20 bg-red-400 text-white font-bold rounded-lg py-2 md:w-80" onClick={handleClick}>Adicionar</button>
         </div>
       </div>
 
