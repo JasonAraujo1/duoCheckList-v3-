@@ -4,6 +4,7 @@ import { NavLink } from 'react-router'
 import plus from '../assets/plus.svg';
 import search from '../assets/search.svg';
 import logout from '../assets/logout.svg';
+import clean from '../assets/clean.svg';
 
 export default function Home() {
 
@@ -11,6 +12,10 @@ export default function Home() {
   const [searchProduct, setSearchProduct] = useState("")
   const [display, setDisplay] = useState([])
   const [cleanSelection, setCleanSelection] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState("");
+
+
 
   useEffect(() => {
     async function onLoad() {
@@ -33,32 +38,37 @@ export default function Home() {
     setDisplay(filterInput)
   }
 
-  
-  
+
+
   function handleClickProduct(id) {
     localStorage.setItem("idProduct", id)
     // console.log("idProduct", id)
   }
-  
+
   function handleSelect({ target }) {
-    const filterInput = dataProduct.filter((item) => item.category === target.value)
-    setDisplay(filterInput)
-    setCleanSelection(true)
-    
+    setSelectedCategory(target.value);
+    const filterInput = dataProduct.filter((item) => item.category === target.value);
+    setDisplay(filterInput);
+    setCleanSelection(true);
+
   }
   function handleSelectStatus({ target }) {
-    const filterStatus = dataProduct.filter((item) => item.status === target.value)
-    setDisplay(filterStatus)
-    setCleanSelection(true)
+    setSelectedStatus(target.value);
+    const filterStatus = dataProduct.filter((item) => item.status === target.value);
+    setDisplay(filterStatus);
+    setCleanSelection(true);
   }
 
-  function handleClean(){
+  function handleClean() {
     setDisplay(dataProduct)
-    
+    setSelectedCategory("")
+    setSelectedStatus("")
+    setCleanSelection(false)
   }
+  //toda vez que usa as funcoes de select options, atualiza o status da 'cleanselection' com boolean, fiz o ternario para ativar o 'limpar filtros' em caso de true no html(linha 85), e ao clicar no limpar filtro ele atualiza o staus do setdisplay com data product e o status do cleanselection com false para esconder o 'limpar filtros'
 
   return (
-    <div  className='w-full sm:w-90 md:w-200'>
+    <div className='w-full sm:w-90 md:w-200'>
 
       <div className='flex mb-8 justify-between items-center'>
         <NavLink to="/new">
@@ -69,7 +79,7 @@ export default function Home() {
           <img src={logout} alt="" className='size-8 hover:' />
           <span className='text-gray-400 text-sm'>Sair</span>
         </NavLink>
-        
+
       </div>
       <div className='flex flex-col items-center'>
 
@@ -80,8 +90,8 @@ export default function Home() {
             className='  outline-0' type="text" />
         </div>
 
-        <div className='w-full text-start cursor-pointer' onClick={handleClean}>
-          <span className={`underline text-sm  ${cleanSelection === false ? 'hidden disabled:' :'text-gray-500'}`}>Limpar filtro <span>x</span></span>
+        <div className='w-full text-start cursor-pointer ' onClick={handleClean}>
+          <span className={`underline text-sm flex items-center gap-1 ${cleanSelection === false ? 'hidden disabled ' : 'text-gray-500'}`}>Limpar filtros <span><img src={clean} alt="" className='size-3.5'/></span></span>
         </div>
 
         <div className=" ">
@@ -90,8 +100,8 @@ export default function Home() {
               <tr className=''>
                 <th className=" text-start px-2 py-2 text-red-400 text-base">Produtos</th>
                 <th className="text-start py-2 pr-3">
-                  <select onChange={handleSelect} className="text-red-400  rounded  py-1  text-base md:text-sm outline-0 w-full md:w-36">
-                    <option selected disabled value="categorias">Categorias</option>
+                  <select value={selectedCategory}  onChange={handleSelect} className="text-red-400  rounded  py-1  text-base md:text-sm outline-0 w-full md:w-36" >
+                    <option disabled value="">Categorias</option>
                     <option value="Sala">Sala</option>
                     <option value="Quarto">Quarto</option>
                     <option value="Banheiro">Banheiro</option>
@@ -99,14 +109,14 @@ export default function Home() {
                     <option value="Escritório">Escritório</option>
                     <option value="Quintal/Jardim">Quintal/Jardim</option>
                     <option value="Varanda/Sacada">Varanda/Sacada</option>
-                    <option value="Cozinha">Cozinha</option>                   
+                    <option value="Cozinha">Cozinha</option>
                   </select>
                 </th>
                 <th className=" py-2 text-start">
-                  <select onChange={handleSelectStatus} className="text-red-400 rounded px-1 py-1   text-base md:text-sm outline-0 w-full md:w-28">
-                    <option className='outline-0' selected disabled value="categorias">Status</option>
+                  <select value={selectedStatus} onChange={handleSelectStatus} className="text-red-400 rounded px-1 py-1   text-base md:text-sm outline-0 w-full md:w-28">
+                    <option className='outline-0' disabled value="">Status</option>
                     <option className='outline-0' value="Adquirido">Adquirido</option>
-                    <option className='outline-0' value="Não Adquirido">Não Adquirido</option>              
+                    <option className='outline-0' value="Não Adquirido">Não Adquirido</option>
                   </select>
                 </th>
               </tr>
