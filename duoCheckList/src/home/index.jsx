@@ -10,6 +10,7 @@ export default function Home() {
   const [dataProduct, setDataProduct] = useState([])
   const [searchProduct, setSearchProduct] = useState("")
   const [display, setDisplay] = useState([])
+  const [cleanSelection, setCleanSelection] = useState(false)
 
   useEffect(() => {
     async function onLoad() {
@@ -32,26 +33,28 @@ export default function Home() {
     setDisplay(filterInput)
   }
 
-  function handleSelect({ target }) {
-    const filterInput = dataProduct.filter((item) => item.category === target.value)
-    setDisplay(filterInput)
-    
-  }
-
-
+  
+  
   function handleClickProduct(id) {
     localStorage.setItem("idProduct", id)
     // console.log("idProduct", id)
   }
-
+  
+  function handleSelect({ target }) {
+    const filterInput = dataProduct.filter((item) => item.category === target.value)
+    setDisplay(filterInput)
+    setCleanSelection(true)
+    
+  }
   function handleSelectStatus({ target }) {
     const filterStatus = dataProduct.filter((item) => item.status === target.value)
     setDisplay(filterStatus)
-    
+    setCleanSelection(true)
   }
 
   function handleClean(){
     setDisplay(dataProduct)
+    
   }
 
   return (
@@ -77,16 +80,16 @@ export default function Home() {
             className='  outline-0' type="text" />
         </div>
 
-        <div className='w-full text-start' onClick={handleClean}>
-          <span className='underline text-sm text-gray-500'>Limpar filtro <span>x</span></span>
+        <div className='w-full text-start cursor-pointer' onClick={handleClean}>
+          <span className={`underline text-sm  ${cleanSelection === false ? 'hidden disabled:' :'text-gray-500'}`}>Limpar filtro <span>x</span></span>
         </div>
 
         <div className=" ">
           <table className=" text-sm md:text-base md:w-200 text-start ">
             <thead className='border-b-2 border-b-red-400 '>
               <tr className=''>
-                <th className=" text-start px-2 py-2 text-red-400 text-base">Todos</th>
-                <th className="text-start py-2 ">
+                <th className=" text-start px-2 py-2 text-red-400 text-base">Produtos</th>
+                <th className="text-start py-2 pr-3">
                   <select onChange={handleSelect} className="text-red-400  rounded  py-1  text-base md:text-sm outline-0 w-full md:w-36">
                     <option selected disabled value="categorias">Categorias</option>
                     <option value="Sala">Sala</option>
