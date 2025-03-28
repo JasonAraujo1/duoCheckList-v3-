@@ -35,7 +35,7 @@ export default function Home() {
   function handleSelect({ target }) {
     const filterInput = dataProduct.filter((item) => item.category === target.value)
     setDisplay(filterInput)
-    handleClean()
+    
   }
 
 
@@ -47,11 +47,11 @@ export default function Home() {
   function handleSelectStatus({ target }) {
     const filterStatus = dataProduct.filter((item) => item.status === target.value)
     setDisplay(filterStatus)
-    handleClean()
+    
   }
 
   function handleClean(){
-   alert("ok")
+    setDisplay(dataProduct)
   }
 
   return (
@@ -77,7 +77,7 @@ export default function Home() {
             className='  outline-0' type="text" />
         </div>
 
-        <div className='w-full text-start '>
+        <div className='w-full text-start' onClick={handleClean}>
           <span className='underline text-sm text-gray-500'>Limpar filtro <span>x</span></span>
         </div>
 
