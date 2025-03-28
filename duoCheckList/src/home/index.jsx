@@ -79,12 +79,12 @@ export default function Home() {
         </div>
 
         <div className="overflow-x-auto max-w-full">
-          <table className="min-w-full text-sm md:text-base md:w-200">
+          <table className="min-w-full text-sm md:text-base md:w-200 text-start">
             <thead className='border-b-2 border-b-red-400 '>
-              <tr >
-                <th className="px-2 py-2 text-red-400 text-base">Todos</th>
-                <th className="px-2 py-2 ">
-                  <select onChange={handleSelect} className="text-red-400  rounded px-1 py-1 w-full text-base md:text-sm outline-0">
+              <tr className=''>
+                <th className=" text-start px-2 py-2 text-red-400 text-base">Todos</th>
+                <th className=" py-2 ">
+                  <select onChange={handleSelect} className="text-red-400  rounded px-1 py-1  text-base md:text-sm outline-0 ">
                     <option selected disabled value="categorias">Categorias</option>
                     <option value="Sala">Sala</option>
                     <option value="Quarto">Quarto</option>
