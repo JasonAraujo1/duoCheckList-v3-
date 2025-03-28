@@ -11,6 +11,8 @@ A aplicação foi desenvolvida utilizando as seguintes tecnologias:
 - **React** (^19.0.0)
 - **React DOM** (^19.0.0)
 - **Bootstrap** (^5.3.3) para estilização
+- **Tailwind CSS** – Estilização e responsividade
+- **fetch API** – Comunicação com o backend
 
 
 ## Configuração do Ambiente de Desenvolvimento
