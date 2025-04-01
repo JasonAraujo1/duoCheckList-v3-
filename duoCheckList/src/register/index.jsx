@@ -30,7 +30,7 @@ export default function Register() {
 
     } else {
       alert("Cadastro efetuado!")
-      navigate("/login")
+      navigate("/")
     }
   }
 
@@ -64,7 +64,7 @@ export default function Register() {
         <button className="cursor-pointer my-10 bg-red-400 text-white font-bold rounded-lg py-2  w-80" onClick={handleClick}>Criar</button>
       </div>
       <span className='text-gray-400 font-medium'>Já possui conta?
-        <NavLink to={'/login'}>
+        <NavLink to={'/'}>
           <span className='text-red-400 font-bold underline mx-1'>Entrar</span>
         </NavLink>
       </span>
