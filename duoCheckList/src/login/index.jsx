@@ -51,7 +51,7 @@ export default function Login() {
     </div>
       <span className='text-gray-400 font-medium'>Não possui conta?
         <NavLink to={'/register'}>
-          <span className='text-red-400 font-bold underline mx-1'>Cadrastro</span>
+          <span className='text-red-400 font-bold underline mx-1'>Cadrastrar</span>
         </NavLink>
       </span>
     </div>
