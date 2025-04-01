@@ -16,11 +16,14 @@ export default function Home() {
   const [selectedStatus, setSelectedStatus] = useState("");
 
 
+  function handleLogout(){
+    localStorage.clear();
+  }
 
   useEffect(() => {
     async function onLoad() {
       const idUser = localStorage.getItem("idUser")
-      console.log("idUser", idUser)
+      // console.log("idUser", idUser)
       const data = await fetchApiIdUser(idUser)
       setDataProduct(Array.isArray(data) ? data : [])
       setDisplay(data)
@@ -38,8 +41,6 @@ export default function Home() {
     setDisplay(filterInput)
   }
 
-
-
   function handleClickProduct(id) {
     localStorage.setItem("idProduct", id)
     // console.log("idProduct", id)
@@ -50,8 +51,8 @@ export default function Home() {
     const filterInput = dataProduct.filter((item) => item.category === target.value);
     setDisplay(filterInput);
     setCleanSelection(true);
-
   }
+
   function handleSelectStatus({ target }) {
     setSelectedStatus(target.value);
     const filterStatus = dataProduct.filter((item) => item.status === target.value);
@@ -66,7 +67,8 @@ export default function Home() {
     setCleanSelection(false)
   }
   //toda vez que usa as funcoes de select options, atualiza o status da 'cleanselection' com boolean, fiz o ternario para ativar o 'limpar filtros' em caso de true no html(linha 85), e ao clicar no limpar filtro ele atualiza o staus do setdisplay com data product e o status do cleanselection com false para esconder o 'limpar filtros'
-
+  
+  
   return (
     <div className='w-full sm:w-90 md:w-200'>
 
@@ -75,7 +77,7 @@ export default function Home() {
           <img src={plus} alt="" className='size-15 hover:' />
           <span className='text-gray-400 text-sm'>Novo</span>
         </NavLink>
-        <NavLink to="/login">
+        <NavLink to="/login" onClick={handleLogout}>
           <img src={logout} alt="" className='size-8 hover:' />
           <span className='text-gray-400 text-sm'>Sair</span>
         </NavLink>
