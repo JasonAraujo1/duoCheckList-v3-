@@ -47,17 +47,17 @@ export default function Home() {
   }
 
   function handleSelect({ target }) {
-    setSelectedCategory(target.value);
-    const filterInput = dataProduct.filter((item) => item.category === target.value);
-    setDisplay(filterInput);
-    setCleanSelection(true);
+    setSelectedCategory(target.value)
+    const filterInput = dataProduct.filter((item) => item.category === target.value)
+    setDisplay(filterInput)
+    setCleanSelection(true)
   }
 
   function handleSelectStatus({ target }) {
     setSelectedStatus(target.value);
-    const filterStatus = dataProduct.filter((item) => item.status === target.value);
-    setDisplay(filterStatus);
-    setCleanSelection(true);
+    const filterStatus = dataProduct.filter((item) => item.status === target.value)
+    setDisplay(filterStatus)
+    setCleanSelection(true)
   }
 
   function handleClean() {

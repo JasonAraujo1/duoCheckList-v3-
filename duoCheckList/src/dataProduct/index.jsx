@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 import { fetchApiIdUser } from '../services/fetchApi';
 import arrow from '../assets/arrow.svg'
 import trash from '../assets/trash.svg'
@@ -9,6 +9,7 @@ import edit from '../assets/edit.svg'
 export default function DataProduct() {
   const [dataUser, setDataUser] = useState([]);
   const [dataProduct, setDataProduct] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function onLoad() {
@@ -30,8 +31,11 @@ export default function DataProduct() {
     
     await fetch(url, { method: 'DELETE' });
   
-    setDataUser(prevData => prevData.filter(item => item.id !== dataProduct));
+    setDataUser(dataUser.filter(item => item.id !== dataProduct))
     localStorage.removeItem("idProduct");
+    
+    alert("Item removido")
+    navigate("/home")
   }
   
   
