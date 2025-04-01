@@ -12,7 +12,7 @@ export default function Edit() {
     const idUser = localStorage.getItem("idUser")
 
     const idProduct = localStorage.getItem("idProduct")
-    console.log(idProduct)
+    // console.log(idProduct)
 
     async function handleClick() {
         const data = {
@@ -32,7 +32,7 @@ export default function Edit() {
             body: JSON.stringify(data)
         })
         const res = await req.json()
-        console.log("new post", res)
+        // console.log("new post", res)
 
 
         alert("Produto cadastrado!")
@@ -101,7 +101,7 @@ export default function Edit() {
 
                 </div>
                 <div>
-                    <button className="cursor-pointer my-20 bg-red-400 text-white font-bold rounded-lg py-2 w-80" onClick={handleClick}>Adicionar</button>
+                    <button className="cursor-pointer my-20 bg-red-400 text-white font-bold rounded-lg py-2 w-80" onClick={handleClick}>Editar</button>
                 </div>
             </div>
 

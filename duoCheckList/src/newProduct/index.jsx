@@ -28,7 +28,7 @@ export default function NewProduct() {
       body: JSON.stringify(data)
     })
     const res = await req.json()
-    console.log("new post", res)
+    // console.log("new post", res)
 
 
     alert("Produto cadastrado!")

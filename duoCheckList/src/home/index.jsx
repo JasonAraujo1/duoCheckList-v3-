@@ -1,35 +1,44 @@
 import React, { useEffect, useState } from 'react'
 import { fetchApiIdUser } from '../services/fetchApi'
-import { NavLink } from 'react-router'
+import { NavLink, useNavigate } from 'react-router'
 import plus from '../assets/plus.svg';
 import search from '../assets/search.svg';
 import logout from '../assets/logout.svg';
 import clean from '../assets/clean.svg';
 
+
 export default function Home() {
 
-  const [dataProduct, setDataProduct] = useState([])
-  const [searchProduct, setSearchProduct] = useState("")
-  const [display, setDisplay] = useState([])
-  const [cleanSelection, setCleanSelection] = useState(false)
+  const [dataProduct, setDataProduct] = useState([]);
+  const [searchProduct, setSearchProduct] = useState("");
+  const [display, setDisplay] = useState([]);
+  const [cleanSelection, setCleanSelection] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
+  const navigate = useNavigate();
 
 
   function handleLogout(){
-    localStorage.clear();
+    localStorage.clear()
   }
 
   useEffect(() => {
     async function onLoad() {
       const idUser = localStorage.getItem("idUser")
-      // console.log("idUser", idUser)
-      const data = await fetchApiIdUser(idUser)
-      setDataProduct(Array.isArray(data) ? data : [])
-      setDisplay(data)
+      if(idUser){
+        const data = await fetchApiIdUser(idUser)
+        setDataProduct(Array.isArray(data) ? data : [])
+        setDisplay(Array.isArray(data) ? data : [])
+      }
+      else{
+        setDisplay([])
+        navigate("/login")
+      }
+      //  console.log("idUser", idUser)
       //Se o usuário não tem produtos, a API pode retornar algo que não é um array (como undefined, null ou {}). Quando isso acontece, o React tenta fazer dataProduct.map(...) em algo inválido, o que gera erro e quebra a página.
       //então usamos Array.isArray() para checar se data é um array. Se for, usamos ele. Se não for, usamos um array vazio [].
 
+      
     }
     onLoad()
   }, [])

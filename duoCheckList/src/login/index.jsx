@@ -12,7 +12,7 @@ export default function Login() {
   async function handleClick() {
     const data = await fetchApiUsers()
     const dataFind = data.find((item) => item.name === name && item.password === password)
-    console.log(dataFind)
+    // console.log(dataFind)
 
     if (!dataFind) {
       alert("Usuário ou senha incorretos!")

@@ -41,7 +41,7 @@ export default function DataProduct() {
 
 
   const filteredProduct = dataUser.filter((item) => item.id === dataProduct);
-  console.log("produto filtrado", filteredProduct);
+  // console.log("produto filtrado", filteredProduct);
 
   return (
     <div className=' w-full sm:w-80 md:w-200'>
