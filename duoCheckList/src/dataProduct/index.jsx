@@ -23,56 +23,67 @@ export default function DataProduct() {
     }
     onLoad()
   }, []);
-  // console.log("dataUser",dataUser)
+   
 
-  const filteredProduct = dataUser.filter((item) => item.id === dataProduct);
-  console.log("produto filtrado", filteredProduct);
+  async function handleDelete() {
+    const url = `https://67be079f321b883e790ee0ed.mockapi.io/api/v1/products/${dataProduct}`;
+    
+    await fetch(url, { method: 'DELETE' });
+  
+    setDataUser(prevData => prevData.filter(item => item.id !== dataProduct));
+    localStorage.removeItem("idProduct");
+  }
+  
+  
 
-  return (
-    <div className=' w-full sm:w-80 md:w-200'>
-      <NavLink to={"/home"}>
-        <img src={arrow} alt="" className='size-9' />
-      </NavLink>
-      <div className='flex flex-col items-start gap-4 mt-12 mb-18'>
-          <p className='font-bold text-3xl'>Dados do Produto</p>
-          <span className='text-gray-400 text-lg font-medium '>Informações do produto adicionado</span>
-        </div>
+const filteredProduct = dataUser.filter((item) => item.id === dataProduct);
+console.log("produto filtrado", filteredProduct);
 
-      <div>
-        {dataUser.length === 0 ? (
-          <p>Nenhum produto encontrado.</p>
-        ) : (
-          filteredProduct.map((item) => (
-            <table key={item.id} className="w-full sm:w-auto md:w-200 mb-8  table-auto ">
-              <tbody >
-                <tr className="border  border-gray-200">
-                  <td className="px-4 py-2 bg-gray-100">Nome</td>
-                  <td className="px-4 py-2">{item.product}</td>
-                </tr>
-                <tr className="border border-gray-200">
-                  <td className="px-4 py-2 bg-gray-100">Status</td>
-                  <td className={`px-4 py-2 ${item.status === 'Não Adquirido' ? 'text-amber-500' : 'text-lime-500'
-                        }`}>{item.status}</td>
-                </tr>
-                <tr className="border border-gray-200">
-                  <td className="px-4 py-2 bg-gray-100">Categoria</td>
-                  <td className="px-4 py-2">{item.category}</td>
-                </tr>
-                <tr className="border border-gray-200">
-                  <td className="px-4 py-2 bg-gray-100">Descrição</td>
-                  <td className="px-4 py-2">{item.description}</td>
-                </tr>
-              </tbody>
-            </table>
+return (
+  <div className=' w-full sm:w-80 md:w-200'>
+    <NavLink to={"/home"}>
+      <img src={arrow} alt="" className='size-9' />
+    </NavLink>
+    <div className='flex flex-col items-start gap-4 mt-12 mb-18'>
+      <p className='font-bold text-3xl'>Dados do Produto</p>
+      <span className='text-gray-400 text-lg font-medium '>Informações do produto adicionado</span>
+    </div>
+
+    <div>
+      {dataUser.length === 0 ? (
+        <p>Nenhum produto encontrado.</p>
+      ) : (
+        filteredProduct.map((item) => (
+          <table key={item.id} className="w-full sm:w-auto md:w-200 mb-8  table-auto ">
+            <tbody >
+              <tr className="border  border-gray-200">
+                <td className="px-4 py-2 bg-gray-100">Nome</td>
+                <td className="px-4 py-2">{item.product}</td>
+              </tr>
+              <tr className="border border-gray-200">
+                <td className="px-4 py-2 bg-gray-100">Status</td>
+                <td className={`px-4 py-2 ${item.status === 'Não Adquirido' ? 'text-amber-500' : 'text-lime-500'
+                  }`}>{item.status}</td>
+              </tr>
+              <tr className="border border-gray-200">
+                <td className="px-4 py-2 bg-gray-100">Categoria</td>
+                <td className="px-4 py-2">{item.category}</td>
+              </tr>
+              <tr className="border border-gray-200">
+                <td className="px-4 py-2 bg-gray-100">Descrição</td>
+                <td className="px-4 py-2">{item.description}</td>
+              </tr>
+            </tbody>
+          </table>
 
 
-          ))
-        )}
-        <div className='flex justify-between'>
-          <img src={trash} alt="" className='bg-red-400 rounded-lg p-1 size-8 ' />
-          <img src={edit} alt="" className='bg-red-400 rounded-lg p-1 size-8 ' />
-        </div>
+        ))
+      )}
+      <div className='flex justify-between'>
+        <img onClick={handleDelete} src={trash} alt="" className='bg-red-400 rounded-lg p-1 size-8 cursor-pointer' />
+        <img src={edit} alt="" className='bg-red-400 rounded-lg p-1 size-8 cursor-pointer' />
       </div>
     </div>
-  );
+  </div>
+);
 }
