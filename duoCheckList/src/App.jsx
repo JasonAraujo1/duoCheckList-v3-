@@ -5,6 +5,7 @@ import Login from './login'
 import Register from './register'
 import DataProduct from './dataProduct'
 import NewProduct from './newProduct'
+import Edit from './editProduct'
 
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
       <Route path ="/register" element={<Register/>}/>
       <Route path ="/product" element={<DataProduct/>}/>
       <Route path ="/new" element={<NewProduct/>}/>
+      <Route path ="/edit" element={<Edit/>}/>
     </Routes>
   )
 }
