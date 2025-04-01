@@ -20,6 +20,7 @@ export default function Home() {
 
   function handleLogout(){
     localStorage.clear()
+    navigate("/")
   }
 
   useEffect(() => {
@@ -32,7 +33,7 @@ export default function Home() {
       }
       else{
         setDisplay([])
-        navigate("/login")
+        navigate("/")
       }
       //  console.log("idUser", idUser)
       //Se o usuário não tem produtos, a API pode retornar algo que não é um array (como undefined, null ou {}). Quando isso acontece, o React tenta fazer dataProduct.map(...) em algo inválido, o que gera erro e quebra a página.
@@ -89,10 +90,10 @@ export default function Home() {
           <img src={plus} alt="" className='size-15 hover:' />
           <span className='text-gray-400 text-sm'>Novo</span>
         </NavLink>
-        <NavLink to="/login" onClick={handleLogout}>
+        <div onClick={handleLogout}>
           <img src={logout} alt="" className='size-8 hover:' />
           <span className='text-gray-400 text-sm'>Sair</span>
-        </NavLink>
+        </div>
 
       </div>
       <div className='flex flex-col items-center'>
