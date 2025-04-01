@@ -15,6 +15,17 @@ A aplicação foi desenvolvida utilizando as seguintes tecnologias:
 - **fetch API** – Comunicação com o backend
 
 
+
+## Estrutura da Aplicação
+
+A aplicação é composta por:
+
+- **Tela de Cadastro e Login**: Permite a criação e autenticação de usuários.
+- **Tela de Listagem de Produtos**: Exibe os produtos cadastrados com status e categorias.
+- **Tela de Cadastro de Produto**: Permite adicionar um novo produto ao sistema.
+- **Tela de Detalhes do Produto**: Exibe informações detalhadas sobre um produto cadastrado.
+
+
 ## Configuração do Ambiente de Desenvolvimento
 
 Certifique-se de ter o Node.js instalado em sua máquina. Para configurar o ambiente, siga os passos abaixo:
@@ -45,17 +56,6 @@ Certifique-se de ter o Node.js instalado em sua máquina. Para configurar o ambi
 - `npm run build` - Compila a aplicação para produção.
 - `npm run lint` - Executa o ESLint para verificar problemas no código.
 - `npm run preview` - Exibe uma prévia da versão de produção.
-
-## Estrutura da Aplicação
-
-A aplicação é composta por:
-
-- **Tela de Cadastro e Login**: Permite a criação e autenticação de usuários.
-- **Tela de Listagem de Produtos**: Exibe os produtos cadastrados com status e categorias.
-- **Tela de Cadastro de Produto**: Permite adicionar um novo produto ao sistema.
-- **Tela de Detalhes do Produto**: Exibe informações detalhadas sobre um produto cadastrado.
-
-
 
 ## Licença
 
