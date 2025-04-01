@@ -109,7 +109,7 @@ export default function Home() {
           <table className=" text-sm md:text-base md:w-200 text-start ">
             <thead className='border-b-2 border-b-red-400 '>
               <tr className=''>
-                <th className=" text-start px-2 py-2 text-red-400 text-base">Produtos</th>
+                <th className="w-30 md:w-72 text-start px-2 py-2 text-red-400 text-base">Produtos</th>
                 <th className="text-start py-2 pr-3">
                   <select value={selectedCategory}  onChange={handleSelect} className="text-red-400  rounded  py-1  text-base md:text-sm outline-0 w-full md:w-36" >
                     <option disabled value="">Categorias</option>
@@ -141,7 +141,7 @@ export default function Home() {
               ) : (
                 display.map((item) => (
                   <tr key={item.id} className="hover:bg-gray-100 ">
-                    <td className='cursor-pointer px-2 py-3 border-b border-gray-300 text-base font-medium'>
+                    <td className='cursor-pointer px-2 py-3 border-b border-gray-300 text-base font-medium '>
                       <NavLink to="/product" onClick={() => handleClickProduct(item.id)} className=" ">
                         {item.product}
                       </NavLink>
