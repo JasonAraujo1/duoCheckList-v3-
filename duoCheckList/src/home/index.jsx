@@ -48,6 +48,9 @@ export default function Home() {
     setSearchProduct(target.value)
     const filterInput = dataProduct.filter((item) => item.product.includes(searchProduct))
     setDisplay(filterInput)
+    if(target.value === ""){
+      setDisplay(dataProduct)
+    }
   }
 
   function handleClickProduct(id) {
