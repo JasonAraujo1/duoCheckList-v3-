@@ -37,7 +37,7 @@ export default function Login() {
       </div>
 
       <div className='flex flex-col items-start '>
-        <span className='text-red-400 font-bold text-base py-2'>nome de usuário: </span>
+        <span className='text-red-400 font-bold text-base py-2'>Nome de usuário: </span>
         <input onChange={(event) => setName(event.target.value)} className='border-b-2 border-gray-200 w-full outline-0' type="text" placeholder='ex: fulano123' />
       </div>
 
@@ -51,7 +51,7 @@ export default function Login() {
     </div>
       <span className='text-gray-400 font-medium'>Não possui conta?
         <NavLink to={'/register'}>
-          <span className='text-red-400 font-bold'> Cadrastro</span>
+          <span className='text-red-400 font-bold underline mx-1'>Cadrastro</span>
         </NavLink>
       </span>
     </div>

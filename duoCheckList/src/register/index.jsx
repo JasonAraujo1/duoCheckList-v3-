@@ -65,7 +65,7 @@ export default function Register() {
       </div>
       <span className='text-gray-400 font-medium'>Já possui conta?
         <NavLink to={'/login'}>
-          <span className='text-red-400 font-bold'> Login</span>
+          <span className='text-red-400 font-bold underline mx-1'>Login</span>
         </NavLink>
       </span>
     </div>
