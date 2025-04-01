@@ -88,11 +88,11 @@ export default function Home() {
       <div className='flex mb-8 justify-between items-center'>
         <NavLink to="/new">
           <img src={plus} alt="" className='size-15 hover:' />
-          <span className='text-gray-400 text-sm'>Novo</span>
+          <span className='text-gray-400 text-sm cursor-pointer'>Novo</span>
         </NavLink>
         <div onClick={handleLogout}>
           <img src={logout} alt="" className='size-8 hover:' />
-          <span className='text-gray-400 text-sm'>Sair</span>
+          <span className='text-gray-400 text-sm cursor-pointer'>Sair</span>
         </div>
 
       </div>
