@@ -160,6 +160,9 @@ Para rodar o projeto em sua máquina, siga os passos abaixo:
 Os scripts disponíveis no `package.json` incluem também comandos para build, lint e preview.  
 
 ---
+## Base Teórica  
+- Essa documentação segue os princípios do livro [Modern technical writing: an introduction to software documentation](https://cdn.zlibrary.to/v1/files/3a191877-ec33-45c8-b0f8-f9d943dae86e/download?t=chCCFUwh5Xdbk41h6ZkNG6GEDGEYq90w).  
+---
 
 ## Licença  
 
