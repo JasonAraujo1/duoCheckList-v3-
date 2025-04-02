@@ -26,6 +26,10 @@ A aplicação é composta por:
 - **Tela de Detalhes do Produto**: Exibe informações detalhadas sobre um produto cadastrado.
 
 
+## Acesso
+
+- Site oficial: https://duo-check-list.vercel.app/
+
 ## Configuração do Ambiente de Desenvolvimento
 
 Certifique-se de ter o Node.js instalado em sua máquina. Para configurar o ambiente, siga os passos abaixo:
