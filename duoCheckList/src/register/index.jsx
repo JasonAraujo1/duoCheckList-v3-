@@ -8,21 +8,35 @@ export default function Register() {
   const [repeatPassword, setRepeatPassword] = useState("")
   const navigate = useNavigate()
 
-  async function handleClick() {
-     if (!name || name.includes(" ")) {
-      alert("Nome de usuário não pode estar vazio ou conter espaços!");
+  async function handleClick(event) {
+    event.preventDefault()
+
+
+    if (!name || !password || !repeatPassword) {
+      alert("Todos os campos devem ser preenchidos!");
       return;
     }
-
-    if (!password) {
-      alert("A senha não pode estar vazia!");
+    if (name !== name.trim()) {
+      alert("O nome de usuário não pode conter espaços desnecessários no início ou no final!");
       return;
     }
-
-    if (password !== repeatPassword) {
+    if (name.length < 3) {
+      alert("O nome de usuário deve ter pelo menos 6 caracteres.");
+      return;
+    }
+    if (password !== password.trim()) {
+      alert("A senha não pode conter espaços desnecessários no início ou no final!");
+      return;
+    }
+    if (password.length < 6) {
+      alert("A senha deve ter pelo menos 6 caracteres.");
+      return;
+    }
+    if (password == !repeatPassword) {
       alert("As senhas não coincidem!");
       return;
     }
+
 
     const data = { name, password };
     const url = "https://67be079f321b883e790ee0ed.mockapi.io/api/v1/users";
@@ -35,6 +49,7 @@ export default function Register() {
     await req.json();
     alert("Cadastro efetuado!");
     navigate("/");
+
   }
 
   return (
