@@ -66,7 +66,7 @@ export default function Register() {
 
       <div className='flex flex-col items-start '>
         <span className='text-red-400 font-bold text-base py-2'>Nome de usuário: </span>
-        <input onChange={(event) => setName(event.target.value)} className='border-b-2 border-gray-200 w-full outline-0' type="text" placeholder='ex: fulano de Tal' />
+        <input  autocapitalize="off"  onChange={(event) => setName(event.target.value)} className='border-b-2 border-gray-200 w-full outline-0' type="text" placeholder='ex: fulano de Tal' />
       </div>
 
       <div className='flex flex-col items-start'>

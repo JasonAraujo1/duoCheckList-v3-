@@ -38,7 +38,7 @@ export default function Login() {
 
       <div className='flex flex-col items-start '>
         <span className='text-red-400 font-bold text-base py-2'>Nome de usuário: </span>
-        <input onChange={(event) => setName(event.target.value)} className='border-b-2 border-gray-200 w-full outline-0' type="text" placeholder='ex: fulano123' />
+        <input  autocapitalize="off"  onChange={(event) => setName(event.target.value)} className='border-b-2 border-gray-200 w-full outline-0' type="text" placeholder='ex: fulano123' />
       </div>
 
       <div className='flex flex-col items-start '>
