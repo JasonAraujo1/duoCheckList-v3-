@@ -45,10 +45,11 @@ export default function Login() {
         <span className='text-red-400 font-bold text-base py-2'>Senha: </span>
         <input onChange={(event) => setPassword(event.target.value)} className='border-b-2 border-gray-200 w-full outline-0' type="password" placeholder='Sua senha'/>
       </div>
+    
     <div>
-      
-      <button className="cursor-pointer mt-10 bg-red-400 text-white font-bold rounded-lg py-2 w-80" onClick={handleClick}>Entrar</button>
+      <button className="cursor-pointer mt-16 bg-red-400 text-white font-bold rounded-lg py-2 w-80" onClick={handleClick}>Entrar</button>
     </div>
+
       <span className='text-gray-400 font-medium'>Não possui conta?
         <NavLink to={'/register'}>
           <span className='text-red-400 font-bold underline mx-1'>Cadrastrar</span>
