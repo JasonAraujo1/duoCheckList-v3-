@@ -88,33 +88,6 @@ O projeto possui a seguinte estrutura básica:
 
 ---
 
-## Instalação e Configuração  
-
-Para rodar o projeto em sua máquina, siga os passos abaixo:  
-
-1. **Clone o repositório:**  
-   ```sh  
-   git clone https://github.com/JasonAraujo1/duoCheckList  
-   ```  
-
-2. **Acesse a pasta do projeto:**  
-   ```sh  
-   cd duoCheckList  
-   ```  
-
-3. **Instale as dependências:**  
-   ```sh  
-   npm install  
-   ```  
-
-4. **Execute o servidor de desenvolvimento:**  
-   ```sh  
-   npm run dev  
-   ```  
-
-Os scripts disponíveis no `package.json` incluem também comandos para build, lint e preview.  
-
----
 
 ## Fluxo da Aplicação  
 
@@ -158,6 +131,33 @@ O design segue um layout limpo e intuitivo, facilitando a navegação e experiê
 Você pode acessar a versão hospedada da aplicação através do link:  
 
 🔗 **Duo CheckList Online** → [https://duo-check-list.vercel.app/](https://duo-check-list.vercel.app/)  
+
+---
+## Instalação e Configuração  
+
+Para rodar o projeto em sua máquina, siga os passos abaixo:  
+
+1. **Clone o repositório:**  
+   ```sh  
+   git clone https://github.com/JasonAraujo1/duoCheckList  
+   ```  
+
+2. **Acesse a pasta do projeto:**  
+   ```sh  
+   cd duoCheckList  
+   ```  
+
+3. **Instale as dependências:**  
+   ```sh  
+   npm install  
+   ```  
+
+4. **Execute o servidor de desenvolvimento:**  
+   ```sh  
+   npm run dev  
+   ```  
+
+Os scripts disponíveis no `package.json` incluem também comandos para build, lint e preview.  
 
 ---
 
