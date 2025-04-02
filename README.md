@@ -14,10 +14,10 @@
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)  
 - [Funcionalidades](#funcionalidades)  
 - [Estrutura do Projeto](#estrutura-do-projeto)  
-- [Instalação e Configuração](#instalação-e-configuração)  
 - [Fluxo da Aplicação](#fluxo-da-aplicação)  
 - [Design e Wireframe](#design-e-wireframe)  
 - [Acesso](#acesso)  
+- [Instalação e Configuração](#instalação-e-configuração)  
 - [Licença](#licença)  
 
 ---
