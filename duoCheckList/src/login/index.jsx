@@ -26,7 +26,7 @@ export default function Login() {
 
   return (
     <div className='flex flex-col gap-6 w-80 md:w-200'>
-      <div className='flex flex-col items-center m-9'>
+      <div className='flex flex-col items-center m-2'>
         <img src={checkList} alt="" className='size-20' />
         <p className='font-bold text-gray-400'>Duo CheckList</p>
       </div>
