@@ -54,7 +54,7 @@ export default function Register() {
 
   return (
     <div className='flex flex-col gap-6  md:w-200'>
-      <div className='flex flex-col items-center m-4 '>
+      <div className='flex flex-col items-center m-2 '>
         <img src={checkList} alt="" className='size-20' />
         <p className='font-bold text-gray-400'>Duo CheckList</p>
       </div>
