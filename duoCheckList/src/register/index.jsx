@@ -9,29 +9,32 @@ export default function Register() {
   const navigate = useNavigate()
 
   async function handleClick() {
-    const data = {
-      name: name,
-      password: password
+     if (!name || name.includes(" ")) {
+      alert("Nome de usuário não pode estar vazio ou conter espaços!");
+      return;
     }
-    const url = "https://67be079f321b883e790ee0ed.mockapi.io/api/v1/users"
 
-    const req = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    })
-    const res = await req.json()
-    // console.log(res)
+    if (!password) {
+      alert("A senha não pode estar vazia!");
+      return;
+    }
 
     if (password !== repeatPassword) {
       alert("As senhas não coincidem!");
-
-    } else {
-      alert("Cadastro efetuado!")
-      navigate("/")
+      return;
     }
+
+    const data = { name, password };
+    const url = "https://67be079f321b883e790ee0ed.mockapi.io/api/v1/users";
+
+    const req = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    await req.json();
+    alert("Cadastro efetuado!");
+    navigate("/");
   }
 
   return (
