@@ -32,7 +32,7 @@ export default function Register() {
       alert("A senha deve ter pelo menos 6 caracteres.");
       return;
     }
-    if (password ==! repeatPassword) {
+    if (password !== repeatPassword) {
       alert("As senhas não coincidem!");
       return;
     }
