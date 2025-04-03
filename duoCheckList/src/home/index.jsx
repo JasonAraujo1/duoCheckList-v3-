@@ -29,6 +29,10 @@ export default function Home() {
       const idUser = localStorage.getItem("idUser")
       if (idUser) {
         const data = await fetchApiIdUser(idUser)
+
+        const sortedData = Array.isArray(data) ? data.sort((a, b) => a.product.localeCompare(b.product)) : []
+        //ordem alfabética
+
         setDataProduct(Array.isArray(data) ? data : [])
         setDisplay(Array.isArray(data) ? data : [])
         
