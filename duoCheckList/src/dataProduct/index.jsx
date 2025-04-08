@@ -11,6 +11,7 @@ export default function DataProduct() {
   const [dataProduct, setDataProduct] = useState([]);
   const navigate = useNavigate()
 
+  
   useEffect(() => {
     async function onLoad() {
       const idUser = localStorage.getItem("idUser");
