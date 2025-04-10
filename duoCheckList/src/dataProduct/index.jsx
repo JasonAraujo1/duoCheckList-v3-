@@ -4,6 +4,7 @@ import { fetchApiIdUser } from '../services/fetchApi';
 import arrow from '../assets/arrow.svg'
 import trash from '../assets/trash.svg'
 import edit from '../assets/edit.svg'
+import TableDataProduct from '../components/tableDataProduct';
 
 
 export default function DataProduct() {
@@ -11,7 +12,7 @@ export default function DataProduct() {
   const [dataProduct, setDataProduct] = useState([]);
   const navigate = useNavigate()
 
-  
+
   useEffect(() => {
     async function onLoad() {
       const idUser = localStorage.getItem("idUser");
@@ -55,35 +56,11 @@ export default function DataProduct() {
       </div>
 
       <div>
-        {dataUser.length === 0 ? (
-          <p>Nenhum produto encontrado.</p>
-        ) : (
-          filteredProduct.map((item) => (
-            <table key={item.id} className="w-full sm:w-auto md:w-200 mb-8  table-auto ">
-              <tbody >
-                <tr className="border  border-gray-200">
-                  <td className="px-4 py-2 bg-gray-100">Nome</td>
-                  <td className="px-4 py-2">{item.product}</td>
-                </tr>
-                <tr className="border border-gray-200">
-                  <td className="px-4 py-2 bg-gray-100">Status</td>
-                  <td className={`px-4 py-2 ${item.status === 'Não Adquirido' ? 'text-amber-500' : 'text-lime-500'
-                    }`}>{item.status}</td>
-                </tr>
-                <tr className="border border-gray-200">
-                  <td className="px-4 py-2 bg-gray-100">Categoria</td>
-                  <td className="px-4 py-2">{item.category}</td>
-                </tr>
-                <tr className="border border-gray-200">
-                  <td className="px-4 py-2 bg-gray-100">Descrição</td>
-                  <td className="px-4 py-2">{item.description}</td>
-                </tr>
-              </tbody>
-            </table>
 
+        <TableDataProduct
+          dataUser={dataUser}
+          filteredProduct={filteredProduct} />
 
-          ))
-        )}
         <div className='flex justify-between'>
           <img onClick={handleDelete} src={trash} alt="" className='bg-red-400 rounded-lg p-1 size-8 cursor-pointer' />
           <NavLink to={"/edit"}>
