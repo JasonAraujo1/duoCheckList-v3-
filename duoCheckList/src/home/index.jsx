@@ -127,7 +127,8 @@ export default function Home() {
           handleSelect={handleSelect} 
           selectedStatus={selectedStatus} 
           handleSelectStatus={handleSelectStatus} 
-          display={display} />
+          display={display}
+          handleClickProduct={handleClickProduct} />
         </div>
 
 
