@@ -5,7 +5,7 @@
 ---
 <img src="./duoCheckList/src/assets/print.PNG"/>
 
-## Sumário  
+## Sumário:
 
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)  
 - [Funcionalidades](#funcionalidades)  
