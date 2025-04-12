@@ -7,15 +7,15 @@
 
 ## Sumário:
 
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)  
-- [Funcionalidades](#funcionalidades)  
-- [Estrutura do Projeto](#estrutura-do-projeto)  
-- [Fluxo da Aplicação](#fluxo-da-aplicação)  
-- [Fluxograma](#fluxograma)  
-- [Design e Wireframe](#design-e-wireframe)  
-- [Acesso](#acesso)  
-- [Instalação e Configuração](#instalação-e-configuração)  
-- [Licença](#licença)  
+- [Tecnologias Utilizadas:](#tecnologias-utilizadas)  
+- [Funcionalidades:](#funcionalidades)  
+- [Estrutura do Projeto:](#estrutura-do-projeto)  
+- [Fluxo da Aplicação:](#fluxo-da-aplicação)  
+- [Fluxograma:](#fluxograma)  
+- [Design e Wireframe:](#design-e-wireframe)  
+- [Acesso:](#acesso)  
+- [Instalação e Configuração:](#instalação-e-configuração)  
+- [Licença:](#licença)  
 
 ---
 
