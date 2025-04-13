@@ -19,7 +19,7 @@
 
 ---
 
-## Tecnologias Utilizadas  
+## Tecnologias Utilizadas:  
 
 O projeto foi desenvolvido utilizando as seguintes tecnologias:  
 
@@ -33,7 +33,7 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 ---
 
-## Funcionalidades  
+## Funcionalidades:  
 
 A aplicação oferece as seguintes funcionalidades:  
 
@@ -61,7 +61,7 @@ A aplicação oferece as seguintes funcionalidades:
 
 ---
 
-## Estrutura do Projeto  
+## Estrutura do Projeto:  
 
 O projeto possui a seguinte estrutura básica:  
 
@@ -79,7 +79,7 @@ O projeto possui a seguinte estrutura básica:
 
 ---
 
-## Fluxo da Aplicação  
+## Fluxo da Aplicação:  
 
 1. **Inicialização:** O usuário é direcionado para a página de login ao acessar o aplicativo.  
 2. **Autenticação:** O usuário é autenticado e redirecionado para a página principal.  
@@ -89,7 +89,7 @@ O projeto possui a seguinte estrutura básica:
 
 ---
 
-## Fluxograma  
+## Fluxograma:  
 
 Para entender visualmente o fluxo da aplicação, acesse o seguinte link:  
 
@@ -97,18 +97,18 @@ Para entender visualmente o fluxo da aplicação, acesse o seguinte link:
 <img src="/duoCheckList/src/assets/fluxograma.png"></img>
 ---
 
-## Design e Wireframe  
+## Design e Wireframe:  
 
 🔗 **Wireframe do Duo CheckList** → [Moqups Wireframe](https://app.moqups.com/0v1WYebsFY33kii807RmGZYuwhvWyEbs/view/page/a7bc758b4)  
 
 ---
 
-## Acesso  
+## Acesso:  
 
 🔗 **Duo CheckList Online** → [https://duo-check-list.vercel.app/](https://duo-check-list.vercel.app/)  
 
 ---
-## Instalação e Configuração  
+## Instalação e Configuração:  
 
 1. **Clone o repositório:**  
    ```sh  
@@ -131,7 +131,7 @@ Para entender visualmente o fluxo da aplicação, acesse o seguinte link:
    ```  
 
 ---
-## Licença  
+## Licença:  
 
 Este projeto está licenciado sob a [Licença MIT](LICENSE).  
 
