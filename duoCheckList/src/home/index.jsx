@@ -48,6 +48,7 @@ export default function Home() {
       const userNamefilter = user.filter((item) => (item.id).includes(idUser))
       const userNameChoosed = userNamefilter.map((item) => (item.name))
       setUserName(userNameChoosed)
+      
     }
     onLoad()
   }, [])

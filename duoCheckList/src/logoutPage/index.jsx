@@ -12,8 +12,9 @@ export default function Logout() {
 
     function handleConfirm() {
         localStorage.clear()
-        navigate('/')
-    }
+        navigate('/', { replace: true }) // substitui no histórico
+      }
+      
 
     function handleCancel() {
         navigate(-1) // volta para a página anterior

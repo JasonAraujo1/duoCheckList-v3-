@@ -5,7 +5,7 @@ import Register from './register'
 import DataProduct from './dataProduct'
 import NewProduct from './newProduct'
 import Edit from './editProduct'
-import Home from './home';
+import Home from './home'
 import LogoutPage from './logoutPage'
 
 
