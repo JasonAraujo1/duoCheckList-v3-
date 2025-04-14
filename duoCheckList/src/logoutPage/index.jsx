@@ -3,47 +3,44 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export default function Logout() {
-  const navigate = useNavigate()
-  const [showModal, setShowModal] = useState(false)
+    const navigate = useNavigate()
+    const [showModal, setShowModal] = useState(false)
 
-  useEffect(() => {
-    setShowModal(true)
-  }, [])
+    useEffect(() => {
+        setShowModal(true)
+    }, [])
 
-  const handleConfirm = () => {
-    localStorage.clear()
-    navigate('/')
-  }
+    function handleConfirm() {
+        localStorage.clear()
+        navigate('/')
+    }
 
-  const handleCancel = () => {
-    navigate(-1) // volta para a página anterior
-  }
+    function handleCancel() {
+        navigate(-1) // volta para a página anterior
+    }
 
-  if (!showModal) return null
+    if (!showModal) return null
 
-  return (
-    <div style={{
-      position: 'fixed',
-      top: 0, left: 0,
-      width: '100vw',
-      height: '100vh',
-      backgroundColor: 'rgba(0,0,0,0.5)',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}>
-      <div style={{
-        background: 'white',
-        padding: '2rem',
-        borderRadius: '0.5rem',
-        textAlign: 'center',
-      }}>
-        <h2>Tem certeza que deseja sair?</h2>
-        <div style={{ marginTop: '1rem' }}>
-          <button onClick={handleConfirm} style={{ marginRight: '1rem' }}>Sim</button>
-          <button onClick={handleCancel}>Cancelar</button>
+    return (
+        <div className="fixed inset-0 bg-gray-200 bg-opacity-50 flex justify-center items-center z-50">
+            <div className="bg-white p-8 rounded-lg text-center shadow-lg max-w-sm w-full">
+                <h2 className="text-xl font-semibold">Tem certeza que deseja sair?</h2>
+                <div className="mt-4 flex justify-center gap-4">
+                    <button
+                        onClick={handleConfirm}
+                        className="px-4 py-2 bg-red-400 text-white rounded hover:bg-red-500 transition cursor-pointer"
+                    >
+                        Sim
+                    </button>
+                    <button
+                        onClick={handleCancel}
+                        className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition cursor-pointer"
+                    >
+                        Cancelar
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  )
+    )
+
 }
