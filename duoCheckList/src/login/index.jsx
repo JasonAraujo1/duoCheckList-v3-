@@ -18,7 +18,6 @@ export default function Login() {
       alert("Usuário ou senha incorretos!")
     } else {
       localStorage.setItem("idUser", dataFind.id)
-
       navigate("/home")
     }
 

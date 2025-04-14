@@ -6,6 +6,7 @@ import DataProduct from './dataProduct'
 import NewProduct from './newProduct'
 import Edit from './editProduct'
 import Home from './home';
+import LogoutPage from './logoutPage'
 
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
     <Routes>
       <Route path="/home" element={<Home/>}/>
       <Route index element={<Login/>}/>
+      <Route path="/logout" element={<LogoutPage />} />
       <Route path ="/register" element={<Register/>}/>
       <Route path ="/product" element={<DataProduct/>}/>
       <Route path ="/new" element={<NewProduct/>}/>

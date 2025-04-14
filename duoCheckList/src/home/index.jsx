@@ -6,6 +6,7 @@ import search from '../assets/search.svg';
 import logout from '../assets/logout.svg';
 import clean from '../assets/clean.svg';
 import TableHome from '../components/tableHome';
+import LogoutPage from '../logoutPage';
 
 
 export default function Home() {
@@ -20,10 +21,8 @@ export default function Home() {
   const navigate = useNavigate();
 
 
-  function handleLogout() {
-    localStorage.clear()
-    navigate("/")
-  }
+
+
 
   useEffect(() => {
     async function onLoad() {
@@ -99,9 +98,11 @@ export default function Home() {
           <img src={plus} alt="" className='size-15 hover:' />
           <span className='text-gray-400 text-sm cursor-pointer'>Novo</span>
         </NavLink>
-        <div onClick={handleLogout}>
-          <img src={logout} alt="" className='size-8 hover:' />
-          <span className='text-gray-400 text-sm cursor-pointer'>Sair</span>
+        <div className=' cursor-pointer'>
+          <NavLink to={'/logout'}>
+            <img src={logout} alt="" className='size-8 hover:' />
+            <span className='text-gray-400 text-sm '>Sair</span>
+          </NavLink>
         </div>
       </div>
 
@@ -122,13 +123,13 @@ export default function Home() {
         </div>
 
         <div className=" ">
-          <TableHome 
-          selectedCategory={selectedCategory} 
-          handleSelect={handleSelect} 
-          selectedStatus={selectedStatus} 
-          handleSelectStatus={handleSelectStatus} 
-          display={display}
-          handleClickProduct={handleClickProduct} />
+          <TableHome
+            selectedCategory={selectedCategory}
+            handleSelect={handleSelect}
+            selectedStatus={selectedStatus}
+            handleSelectStatus={handleSelectStatus}
+            display={display}
+            handleClickProduct={handleClickProduct} />
         </div>
 
 
