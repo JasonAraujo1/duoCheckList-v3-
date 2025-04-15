@@ -6,11 +6,11 @@ export default function Register() {
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
   const [repeatPassword, setRepeatPassword] = useState("")
+
   const navigate = useNavigate()
 
   async function handleClick(event) {
     event.preventDefault()
-
 
     if (!name || !password || !repeatPassword) {
       alert("Todos os campos devem ser preenchidos!");
@@ -37,7 +37,6 @@ export default function Register() {
       return;
     }
 
-
     const data = { name, password };
     const url = "https://67be079f321b883e790ee0ed.mockapi.io/api/v1/users";
 
@@ -49,7 +48,6 @@ export default function Register() {
     await req.json();
     alert("Cadastro efetuado!");
     navigate("/");
-
   }
 
   return (

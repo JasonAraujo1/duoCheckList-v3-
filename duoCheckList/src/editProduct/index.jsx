@@ -9,11 +9,11 @@ export default function Edit() {
     const [status, setStatus] = useState("")
     const [category, setCategory] = useState("")
     const [description, setDescription] = useState("")
-    const navigate = useNavigate()
-    const idUser = localStorage.getItem("idUser")
 
+    const idUser = localStorage.getItem("idUser")
     const idProduct = localStorage.getItem("idProduct")
-    // console.log(idProduct)
+    
+    const navigate = useNavigate()
 
     async function handleClick() {
         const data = {
@@ -35,10 +35,8 @@ export default function Edit() {
         const res = await req.json()
         // console.log("new post", res)
 
-
         alert("Produto cadastrado!")
         navigate("/home")
-
     }
 
     return (
@@ -62,9 +60,6 @@ export default function Edit() {
                     <button className="cursor-pointer my-20 bg-red-400 text-white font-bold rounded-lg py-2 w-80" onClick={handleClick}>Editar</button>
                 </div>
             </div>
-
-
-
         </div>
     )
 }

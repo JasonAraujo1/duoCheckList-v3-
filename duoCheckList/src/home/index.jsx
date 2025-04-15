@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { fetchApiIdUser, fetchApiUsers } from '../services/fetchApi'
-import { NavLink, useNavigate } from 'react-router'
-import plus from '../assets/plus.svg';
+import { useNavigate } from 'react-router'
 import search from '../assets/search.svg';
-import logout from '../assets/logout.svg';
 import clean from '../assets/clean.svg';
 import TableHome from '../components/tableHome';
-import LogoutPage from '../logoutPage';
-
+import HeaderHome from '../components/headerHome';
 
 export default function Home() {
-
   const [dataProduct, setDataProduct] = useState([]);
   const [searchProduct, setSearchProduct] = useState("");
   const [display, setDisplay] = useState([]);
@@ -18,11 +14,8 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
   const [userName, setUserName] = useState([]);
+
   const navigate = useNavigate();
-
-
-
-
 
   useEffect(() => {
     async function onLoad() {
@@ -48,11 +41,9 @@ export default function Home() {
       const userNamefilter = user.filter((item) => (item.id).includes(idUser))
       const userNameChoosed = userNamefilter.map((item) => (item.name))
       setUserName(userNameChoosed)
-      
     }
     onLoad()
   }, [])
-  // console.log("teste", dataProduct)
 
   function handleChange({ target }) {
     setSearchProduct(target.value)
@@ -93,26 +84,13 @@ export default function Home() {
 
   return (
     <div className='w-full sm:w-90 md:w-200'>
-
-      <div className='flex mb-8 justify-between items-center'>
-        <NavLink to="/new">
-          <img src={plus} alt="" className='size-15 hover:' />
-          <span className='text-gray-400 text-sm cursor-pointer'>Novo</span>
-        </NavLink>
-        <div className=' cursor-pointer'>
-          <NavLink to={'/logout'}>
-            <img src={logout} alt="" className='size-8 hover:' />
-            <span className='text-gray-400 text-sm '>Sair</span>
-          </NavLink>
-        </div>
-      </div>
+       <HeaderHome />
 
       <div className='flex mb-3 mx-4'>
         <span className='text-gray-400 text-medium font-medium'>Olá, {userName}</span>
       </div>
 
       <div className='flex flex-col items-center'>
-
         <div className='bg-neutral-100 flex p-2 rounded-lg justify-center w-full max-w-80 mt-5 mb-6 gap-4'>
           <img src={search} alt="" className='size-7 ' />
           <input value={searchProduct} onChange={handleChange} placeholder='Buscar Produto...'
@@ -132,8 +110,6 @@ export default function Home() {
             display={display}
             handleClickProduct={handleClickProduct} />
         </div>
-
-
       </div>
     </div>
   )

@@ -29,22 +29,16 @@ export default function NewProduct() {
       body: JSON.stringify(data)
     })
     const res = await req.json()
-    // console.log("new post", res)
-
 
     alert("Produto cadastrado!")
     navigate("/home")
-
   }
 
   return (
-
-
     <div className='flex flex-col gap-6  md:w-200'>
       <NavLink to={"/home"}>
         <img src={arrow} alt="" className='size-9' />
       </NavLink>
-
 
       <div className='flex flex-col gap-6  md:w-200 my-8' >
         <div className='flex flex-col items-start gap-4'>
@@ -62,9 +56,6 @@ export default function NewProduct() {
           <button className="cursor-pointer my-20 bg-red-400 text-white font-bold rounded-lg py-2 w-80" onClick={handleClick}>Adicionar</button>
         </div>
       </div>
-
-
-
     </div>
   )
 }

@@ -2,10 +2,18 @@ import React, { useState } from 'react'
 import { fetchApiUsers } from '../services/fetchApi'
 import { NavLink, useNavigate } from 'react-router'
 import FormLogin from '../components/formLogin'
+import { useEffect } from 'react'
 
 export default function Login() {
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
+
+  useEffect(() => {
+    const idUser = localStorage.getItem("idUser")
+    if (idUser) {
+      navigate("/home")
+    }
+  }, [])
 
   const navigate = useNavigate()
 
@@ -20,12 +28,10 @@ export default function Login() {
       localStorage.setItem("idUser", dataFind.id)
       navigate("/home")
     }
-
   }
 
   return (
     <div className='flex flex-col gap-6 w-80 md:w-200'>
-      
       <FormLogin setName={setName} setPassword={setPassword} />
 
       <div>
