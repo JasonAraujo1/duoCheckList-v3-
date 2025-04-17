@@ -2,7 +2,7 @@
 
 **Duo CheckList** é uma aplicação web para gerenciamento colaborativo de tarefas. Com ela, dois usuários podem criar, editar e acompanhar checklists compartilhados, facilitando a organização e a comunicação sobre tarefas e produtos.
 
----
+ ---
 <img src="./duoCheckList/src/assets/print.PNG"/>
 
 ## Sumário:
