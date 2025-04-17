@@ -37,7 +37,7 @@ export default function Login() {
       <div>
         <button className="cursor-pointer mt-16 bg-red-400 text-white font-bold rounded-lg py-2 w-80" onClick={handleClick}>Entrar</button>
       </div>
-
+        
       <span className='text-gray-400 font-medium'>Não possui conta?
         <NavLink to={'/register'}>
           <span className='text-red-400 font-bold underline mx-1'>Cadrastrar</span>

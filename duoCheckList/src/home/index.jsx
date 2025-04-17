@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { fetchApiIdUser, fetchApiUsers } from '../services/fetchApi'
 import { useNavigate } from 'react-router'
-import search from '../assets/search.svg';
 import clean from '../assets/clean.svg';
 import TableHome from '../components/tableHome';
 import HeaderHome from '../components/headerHome';
+import SearchInput from '../components/searchInput'
+
 
 export default function Home() {
   const [dataProduct, setDataProduct] = useState([]);
@@ -84,19 +85,15 @@ export default function Home() {
 
   return (
     <div className='w-full sm:w-90 md:w-200'>
-       <HeaderHome />
+      <HeaderHome />
 
       <div className='flex mb-3 mx-4'>
         <span className='text-gray-400 text-medium font-medium'>Olá, {userName}</span>
       </div>
 
       <div className='flex flex-col items-center'>
-        <div className='bg-neutral-100 flex p-2 rounded-lg justify-center w-full max-w-80 mt-5 mb-6 gap-4'>
-          <img src={search} alt="" className='size-7 ' />
-          <input value={searchProduct} onChange={handleChange} placeholder='Buscar Produto...'
-            className='  outline-0' type="text" />
-        </div>
 
+        <SearchInput searchProduct={searchProduct} handleChange={handleChange} />
         <div className='w-full text-start cursor-pointer  h-4' onClick={handleClean}>
           <span className={`underline text-sm flex items-center gap-1 ${cleanSelection === false ? 'hidden disabled ' : 'text-gray-500'}`}>Limpar filtros <span><img src={clean} alt="" className='size-3.5' /></span></span>
         </div>
