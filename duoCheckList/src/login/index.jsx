@@ -34,9 +34,9 @@ export default function Login() {
   return (
     <div className='flex flex-col gap-6 w-80 md:w-200'>
       <FormLogin setName={setName} setPassword={setPassword} />
-
-      <RedBtn onClick={handleClick} text={'Entrar'}/>
       
+      <RedBtn onClick={handleClick} text={'Entrar'}/>
+    
       <span className='text-gray-400 font-medium'>Não possui conta?
         <NavLink to={'/register'}>
           <span className='text-red-400 font-bold underline mx-1'>Cadrastrar</span>

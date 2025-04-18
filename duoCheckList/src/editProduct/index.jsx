@@ -45,13 +45,11 @@ export default function Edit() {
             <NavLink to={"/home"}>
                 <img src={arrow} alt="" className='size-9' />
             </NavLink>
-
             <div className='flex flex-col gap-6  md:w-200 my-8' >
                 <div className='flex flex-col items-start gap-4'>
                     <p className='font-bold text-3xl'>Editar Produto</p>
                     <span className='text-gray-400 text-lg font-medium '>Preencha os campos para editar </span>
                 </div>
-
                 <FormEditProduct
                     setProduct={setProduct}
                     setStatus={setStatus}
