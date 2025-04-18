@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router'
 import FormRegister from '../components/formRegister'
+import RedBtn from '../components/ui/redBtn'
 
 export default function Register() {
   const [name, setName] = useState("")
@@ -52,10 +53,13 @@ export default function Register() {
 
   return (
     <div className='flex flex-col gap-6  md:w-200'>
-      <FormRegister setName={setName} setPassword={setPassword} setRepeatPassword={setRepeatPassword}/>
-      <div>
-        <button className="cursor-pointer mt-7 bg-red-400 text-white font-bold rounded-lg py-2  w-80" onClick={handleClick}>Criar</button>
-      </div>
+      <FormRegister 
+      setName={setName} 
+      setPassword={setPassword} 
+      setRepeatPassword={setRepeatPassword}
+      />
+      <RedBtn onClick={handleClick} text={'Criar'}/>
+      
       <span className='text-gray-400 font-medium'>Já possui conta?
         <NavLink to={'/'}>
           <span className='text-red-400 font-bold underline mx-1'>Entrar</span>
