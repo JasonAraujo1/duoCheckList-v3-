@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { fetchApiIdUser } from '../services/fetchApi';
-import trash from '../assets/trash.svg'
-import edit from '../assets/edit.svg'
 import TableDataProduct from '../components/tableDataProduct';
 import HeaderDataProduct from '../components/headerDataProduct';
+import TrashBtn from '../components/ui/trashBtn';
+import EditBtn from '../components/ui/editBtn';
 
 export default function DataProduct() {
   const [dataUser, setDataUser] = useState([])
@@ -43,18 +43,16 @@ export default function DataProduct() {
 
   return (
     <div className=' w-full sm:w-80 md:w-200'>
-      <HeaderDataProduct/>
+      <HeaderDataProduct />
       <div>
         <TableDataProduct
           dataUser={dataUser}
-          filteredProduct={filteredProduct} 
+          filteredProduct={filteredProduct}
         />
-          
+
         <div className='flex justify-between'>
-          <img onClick={handleDelete} src={trash} alt="" className='bg-red-400 rounded-lg p-1 size-8 cursor-pointer' />
-          <NavLink to={"/edit"}>
-            <img src={edit} alt="" className='bg-red-400 rounded-lg p-1 size-8 cursor-pointer' />
-          </NavLink>
+          <TrashBtn handleDelete={handleDelete} />
+          <EditBtn />
         </div>
       </div>
     </div>
