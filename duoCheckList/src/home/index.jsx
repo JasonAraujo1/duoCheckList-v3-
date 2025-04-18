@@ -93,8 +93,14 @@ export default function Home() {
 
       <div className='flex flex-col items-center'>
 
-        <SearchInput searchProduct={searchProduct} handleChange={handleChange} />
-        <CleanSelectionBtn handleClean={handleClean} cleanSelection={cleanSelection} />
+        <SearchInput 
+        searchProduct={searchProduct} 
+        handleChange={handleChange} 
+        />
+        <CleanSelectionBtn 
+        handleClean={handleClean} 
+        cleanSelection={cleanSelection} 
+        />
 
         <div className=" ">
           <TableHome
