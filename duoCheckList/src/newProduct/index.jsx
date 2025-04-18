@@ -2,6 +2,7 @@ import { useState } from "react"
 import { NavLink, useNavigate } from "react-router"
 import arrow from '../assets/arrow.svg'
 import FormNewProduct from "../components/formNewProduct"
+import RedBtn from "../components/ui/redBtn"
 
 export default function NewProduct() {
   const [product, setProduct] = useState("")
@@ -53,7 +54,7 @@ export default function NewProduct() {
           setDescription={setDescription} />
 
         <div>
-          <button className="cursor-pointer my-20 bg-red-400 text-white font-bold rounded-lg py-2 w-80" onClick={handleClick}>Adicionar</button>
+          <RedBtn onClick={handleClick} text={"Adicionar"}/>
         </div>
       </div>
     </div>

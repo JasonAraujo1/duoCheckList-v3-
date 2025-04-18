@@ -3,6 +3,7 @@ import { fetchApiUsers } from '../services/fetchApi'
 import { NavLink, useNavigate } from 'react-router'
 import FormLogin from '../components/formLogin'
 import { useEffect } from 'react'
+import RedBtn from '../components/ui/redBtn'
 
 export default function Login() {
   const [name, setName] = useState("")
@@ -34,10 +35,8 @@ export default function Login() {
     <div className='flex flex-col gap-6 w-80 md:w-200'>
       <FormLogin setName={setName} setPassword={setPassword} />
 
-      <div>
-        <button className="cursor-pointer mt-16 bg-red-400 text-white font-bold rounded-lg py-2 w-80" onClick={handleClick}>Entrar</button>
-      </div>
-        
+      <RedBtn onClick={handleClick} text={'Entrar'}/>
+      
       <span className='text-gray-400 font-medium'>Não possui conta?
         <NavLink to={'/register'}>
           <span className='text-red-400 font-bold underline mx-1'>Cadrastrar</span>
