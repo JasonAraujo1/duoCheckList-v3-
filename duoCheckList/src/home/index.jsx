@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { fetchApiIdUser, fetchApiUsers } from '../services/fetchApi'
 import { useNavigate } from 'react-router'
-import clean from '../assets/clean.svg';
 import TableHome from '../components/tableHome';
 import HeaderHome from '../components/headerHome';
 import SearchInput from '../components/searchInput'
+import CleanSelectionBtn from '../components/ui/cleanSelectionBtn';
 
 
 export default function Home() {
@@ -94,9 +94,7 @@ export default function Home() {
       <div className='flex flex-col items-center'>
 
         <SearchInput searchProduct={searchProduct} handleChange={handleChange} />
-        <div className='w-full text-start cursor-pointer  h-4' onClick={handleClean}>
-          <span className={`underline text-sm flex items-center gap-1 ${cleanSelection === false ? 'hidden disabled ' : 'text-gray-500'}`}>Limpar filtros <span><img src={clean} alt="" className='size-3.5' /></span></span>
-        </div>
+        <CleanSelectionBtn handleClean={handleClean} cleanSelection={cleanSelection} />
 
         <div className=" ">
           <TableHome
