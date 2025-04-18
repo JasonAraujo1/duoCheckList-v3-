@@ -3,6 +3,7 @@ import { useState } from "react"
 import { NavLink, useNavigate } from "react-router"
 import arrow from '../assets/arrow.svg'
 import FormEditProduct from "../components/formEditProduct"
+import RedBtn from "../components/ui/redBtn"
 
 export default function Edit() {
     const [product, setProduct] = useState("")
@@ -12,7 +13,7 @@ export default function Edit() {
 
     const idUser = localStorage.getItem("idUser")
     const idProduct = localStorage.getItem("idProduct")
-    
+
     const navigate = useNavigate()
 
     async function handleClick() {
@@ -57,7 +58,7 @@ export default function Edit() {
                     setCategory={setCategory}
                     setDescription={setDescription} />
                 <div>
-                    <button className="cursor-pointer my-20 bg-red-400 text-white font-bold rounded-lg py-2 w-80" onClick={handleClick}>Editar</button>
+                    <RedBtn onClick={handleClick} text={"Editar"} />
                 </div>
             </div>
         </div>
