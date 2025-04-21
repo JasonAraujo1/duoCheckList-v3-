@@ -102,7 +102,7 @@ export default function Home() {
         cleanSelection={cleanSelection} 
         />
 
-        <div className=" ">
+        <div className="">
           <TableHome
             selectedCategory={selectedCategory}
             handleSelect={handleSelect}
