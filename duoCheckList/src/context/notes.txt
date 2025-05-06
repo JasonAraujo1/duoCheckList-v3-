@@ -1,0 +1,74 @@
+Setup do REACT VITE - CONTEXT PROVIDER
+Lembre-se de criar a pasta context dentro de src, e os arquivos Context.jsx e Provider.jsx
+
+Context.jsx
+
+  import { createContext } from 'react';
+
+  const Context = createContext({});
+
+  export default Context;
+Provider.jsx
+
+  import Context from './Context';
+  import { useState } from "react";
+
+  function Provider({ children }) {
+      const [valorGlobal, setValorGlobal] = useState("tipo de dado que você quiser");
+
+
+
+      const contextValue = {
+        valorGlobal,
+        setValorGlobal
+      };
+
+
+      return (
+          <Context.Provider value={contextValue}>
+              {children}
+          </Context.Provider>
+      )
+  }
+
+
+  export default Provider;
+Exemplo de como ficaria o seu main.jsx
+
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+import { BrowserRouter } from 'react-router'
+import Provider from './context/Provider.jsx'
+
+createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
+    <Provider>
+      <App />
+    </Provider>
+  </BrowserRouter>
+)
+Exemplo em uma página
+
+import { useContext } from "react"
+import Context from "../context/Context";
+
+export default function Home() {
+    const {valorGlobal, setValorGlobal} = useContext(Context);
+
+    return (
+        <>
+            <h2>Home</h2>
+            <p>Valor do estado: {valorGlobal}</p>
+        </>
+    )
+}
+
+
+ Faça o import do useContext e do seu Context na pagina secundaria:
+
+import { useContext } from 'react';
+import Context from '../context'; // caminho até o seu contexto
+
+use assim:
+const { nameLogin, senhaLogin, setNameLogin, setSenhaLogin } = useContext(Context);
