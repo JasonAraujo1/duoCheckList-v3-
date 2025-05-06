@@ -1,7 +1,17 @@
   # Duo Checklist(v.2)
 
 **Duo CheckList** é uma aplicação web para gerenciamento colaborativo de tarefas. Com ela, dois usuários podem criar, editar e acompanhar checklists compartilhados, facilitando a organização e a comunicação sobre tarefas e produtos.
+## Atualizações na Versão 2:
 
+A versão 2 do Duo CheckList trouxe como principal melhoria a **componentização dos elementos do código**, permitindo maior organização, reutilização e manutenção do projeto.  
+
+### Componentes Criados:
+- **Header e Footer:** Componentes para cabeçalho e rodapé reutilizáveis em todas as páginas.  
+- **Formulários:** Componentes genéricos para login, cadastro e edição de produtos.  
+- **Lista de Produtos:** Componente para exibição e filtragem de itens.  
+- **Botões e Inputs:** Componentes estilizados para ações e entradas de dados.  
+
+Essa abordagem modular melhora a experiência de desenvolvimento e a qualidade do código.  
  ---
 <img src="./duoCheckList/src/assets/print.PNG"/>
 
