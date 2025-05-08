@@ -3,15 +3,13 @@ import Context from './context';
 import { useEffect, useState } from "react";
 
 function Provider({ children }) {
-    const [name, setName] = useState("")
-    const [password, setPassword] = useState("")
     const [userId, setUserId] = useState([]);
+    const [name, setName] = useState("");
+    const [password, setPassword] = useState("");
 
     useEffect(() => {
         async function fetchUserData() {
             const data = await fetchApiUsers();
-
-           
             const user = data[0];
 
             if (user) {
@@ -25,11 +23,13 @@ function Provider({ children }) {
     }, []);
 
     const contextValue = {
+        userId,
+        setUserId,
         name,
+        setName,
         password,
-        userId
-    };
-
+        setPassword
+      };
 
     return (
         <Context.Provider value={contextValue}>

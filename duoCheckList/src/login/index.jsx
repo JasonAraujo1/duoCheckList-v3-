@@ -9,28 +9,22 @@ import Context from '../context/context'
 export default function Login() {
   const [inputName, setInputName] = useState("")
   const [inputPassword, setInputPassword] = useState("")
+
   const { name, password, userId } = useContext(Context);
-  
+console.log(name, password, userId) 
+  const navigate = useNavigate()
+
   useEffect(() => {
-    const idUser = localStorage.getItem("idUser")
-    if (idUser) {
-      navigate("/home")
-      console.log(name, password, userId)
+    if (userId) {
+      // navigate("/home")
     }
   }, [])
 
-  const navigate = useNavigate()
-
   async function handleClick() {
-    const data = await fetchApiUsers()
-    const dataFind = data.find((item) => item.name === name && item.password === password)
-    // console.log(dataFind)
-
-    if (!dataFind) {
-      alert("Usuário ou senha incorretos!")
+    if (name === inputName && password === inputPassword) {
+      // navigate("/home")
     } else {
-      localStorage.setItem("idUser", dataFind.id)
-      navigate("/home")
+      alert("Usuário ou senha incorretos!")
     }
   }
 
