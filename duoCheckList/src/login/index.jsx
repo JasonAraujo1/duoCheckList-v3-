@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { fetchApiUsers } from '../services/fetchApi'
 import { NavLink, useNavigate } from 'react-router'
 import FormLogin from '../components/formLogin'
@@ -6,9 +6,9 @@ import { useEffect } from 'react'
 import RedBtn from '../components/ui/redBtn'
 
 export default function Login() {
-  const [name, setName] = useState("")
-  const [password, setPassword] = useState("")
 
+  const { name, password, userId } = useContext(Context);
+  console.log(name, password, userId)
   useEffect(() => {
     const idUser = localStorage.getItem("idUser")
     if (idUser) {
@@ -34,9 +34,9 @@ export default function Login() {
   return (
     <div className='flex flex-col gap-6 w-80 md:w-200'>
       <FormLogin setName={setName} setPassword={setPassword} />
-      
-      <RedBtn onClick={handleClick} text={'Entrar'}/>
-    
+
+      <RedBtn onClick={handleClick} text={'Entrar'} />
+
       <span className='text-gray-400 font-medium'>Não possui conta?
         <NavLink to={'/register'}>
           <span className='text-red-400 font-bold underline mx-1'>Cadrastrar</span>

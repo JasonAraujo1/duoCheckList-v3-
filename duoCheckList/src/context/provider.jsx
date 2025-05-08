@@ -11,7 +11,10 @@ async function Provider({ children }) {
     const dataName = data.name;
     const dataPassword = data.password;
     const dataId = data.id;
-    
+
+    setName(dataName);
+    setPassword(dataPassword);
+    setUserId(dataId);
 
     const contextValue = {
         name,
