@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { fetchApiUsers } from '../services/fetchApi'
 import { NavLink, useNavigate } from 'react-router'
 import FormLogin from '../components/formLogin'
-import { useEffect } from 'react'
 import RedBtn from '../components/ui/redBtn'
 import Context from '../context/context'
 
@@ -10,20 +9,27 @@ export default function Login() {
   const [inputName, setInputName] = useState("")
   const [inputPassword, setInputPassword] = useState("")
 
-  const { name, password, userId } = useContext(Context);
-console.log(name, password, userId) 
+  const { setUserId, userId, setName, setPassword } = useContext(Context)
   const navigate = useNavigate()
 
   useEffect(() => {
     if (userId) {
-      // navigate("/home")
+      navigate("/home")
     }
-  }, [])
+  }, [userId])
 
   async function handleClick() {
-    if (name === inputName && password === inputPassword) {
-      // navigate("/home")
-    } else {
+    const data = await fetchApiUsers()
+    const userFound = data.find(user => user.name === inputName && user.password === inputPassword)
+
+    if (userFound) {
+      setUserId(userFound.id);
+      setName(userFound.name);
+      setPassword(userFound.password);
+      localStorage.setItem("idUser", userFound.id); 
+      navigate("/home");
+    }
+     else {
       alert("Usuário ou senha incorretos!")
     }
   }

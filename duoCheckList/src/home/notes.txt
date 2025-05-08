@@ -1,3 +1,6 @@
 line 30-31 :
 //Se o usuário não tem produtos, a API pode retornar algo que não é um array (como undefined, null ou {}). Quando isso acontece, o React tenta fazer dataProduct.map(...) em algo inválido, o que gera erro e quebra a página.
       //então usamos Array.isArray() para checar se data é um array. Se for, usamos ele. Se não for, usamos um array vazio [].
+
+line 81 :
+  //toda vez que usa as funcoes de select options, atualiza o status da 'cleanselection' com boolean, fiz o ternario para ativar o 'limpar filtros' em caso de true no html(linha 85), e ao clicar no limpar filtro ele atualiza o staus do setdisplay com data product e o status do cleanselection com false para esconder o 'limpar filtros'

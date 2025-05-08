@@ -35,11 +35,18 @@ export default function Home() {
         setDisplay([])
         navigate("/")
       }
-      
+
       const user = await fetchApiUsers()
-      const userNamefilter = user.filter((item) => (item.id).includes(idUser))
-      const userNameChoosed = userNamefilter.map((item) => (item.name))
-      setUserName(userNameChoosed)
+
+      if (Array.isArray(user)) {
+        const userNamefilter = user.filter((item) => (item.id).includes(idUser))
+        const userNameChoosed = userNamefilter.map((item) => (item.name))
+        setUserName(userNameChoosed)
+      } else {
+        console.log("fetchApiUsers retornou algo inválido:", user);
+        setUserName([]) // ou algum fallback
+      }
+
     }
     onLoad()
   }, [])
@@ -78,8 +85,6 @@ export default function Home() {
     setSelectedStatus("")
     setCleanSelection(false)
   }
-  //toda vez que usa as funcoes de select options, atualiza o status da 'cleanselection' com boolean, fiz o ternario para ativar o 'limpar filtros' em caso de true no html(linha 85), e ao clicar no limpar filtro ele atualiza o staus do setdisplay com data product e o status do cleanselection com false para esconder o 'limpar filtros'
-
 
   return (
     <div className='w-full sm:w-90 md:w-200'>
@@ -91,13 +96,13 @@ export default function Home() {
 
       <div className='flex flex-col items-center'>
 
-        <SearchInput 
-        searchProduct={searchProduct} 
-        handleChange={handleChange} 
+        <SearchInput
+          searchProduct={searchProduct}
+          handleChange={handleChange}
         />
-        <CleanSelectionBtn 
-        handleClean={handleClean} 
-        cleanSelection={cleanSelection} 
+        <CleanSelectionBtn
+          handleClean={handleClean}
+          cleanSelection={cleanSelection}
         />
 
         <div className="">

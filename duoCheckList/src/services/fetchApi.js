@@ -24,7 +24,8 @@ export async function fetchApiIdUser(idUser) {
       const data = await response.json()
       return data
    } catch (error) {
-      console.log("erro no fetch", error)
+      console.error("erro no fetch", error)
+      return []
    }
 }
 export async function fetchApiProducts() {
