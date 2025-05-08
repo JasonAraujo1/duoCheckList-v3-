@@ -4,15 +4,18 @@ import { NavLink, useNavigate } from 'react-router'
 import FormLogin from '../components/formLogin'
 import { useEffect } from 'react'
 import RedBtn from '../components/ui/redBtn'
+import Context from '../context/context'
 
 export default function Login() {
-
+  const [inputName, setInputName] = useState("")
+  const [inputPassword, setInputPassword] = useState("")
   const { name, password, userId } = useContext(Context);
-  console.log(name, password, userId)
+  
   useEffect(() => {
     const idUser = localStorage.getItem("idUser")
     if (idUser) {
       navigate("/home")
+      console.log(name, password, userId)
     }
   }, [])
 
@@ -33,7 +36,7 @@ export default function Login() {
 
   return (
     <div className='flex flex-col gap-6 w-80 md:w-200'>
-      <FormLogin setName={setName} setPassword={setPassword} />
+      <FormLogin setInputName={setInputName} setInputPassword={setInputPassword} />
 
       <RedBtn onClick={handleClick} text={'Entrar'} />
 

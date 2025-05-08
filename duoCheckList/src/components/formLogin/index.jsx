@@ -1,7 +1,7 @@
 import React from 'react'
 import checkList from '../../assets/checkList.svg'
 
-export default function FormLogin({setName, setPassword}) {
+export default function FormLogin({setInputName, setInputPassword}) {
     return (
         <div>
             <div className='flex flex-col items-center m-2'>
@@ -16,12 +16,12 @@ export default function FormLogin({setName, setPassword}) {
 
             <div className='flex flex-col items-start '>
                 <span className='text-red-400 font-bold text-base py-2'>Nome de usuário: </span>
-                <input autocapitalize="off" onChange={(event) => setName(event.target.value)} className='border-b-2 border-gray-200 w-full outline-0' type="text" placeholder='ex: fulano123' />
+                <input autocapitalize="off" onChange={(event) => setInputName(event.target.value)} className='border-b-2 border-gray-200 w-full outline-0' type="text" placeholder='ex: fulano123' />
             </div>
 
             <div className='flex flex-col items-start '>
                 <span className='text-red-400 font-bold text-base py-2'>Senha: </span>
-                <input onChange={(event) => setPassword(event.target.value)} className='border-b-2 border-gray-200 w-full outline-0' type="password" placeholder='Sua senha' />
+                <input onChange={(event) => setInputPassword(event.target.value)} className='border-b-2 border-gray-200 w-full outline-0' type="password" placeholder='Sua senha' />
             </div>
         </div>
     )

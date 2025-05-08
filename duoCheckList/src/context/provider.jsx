@@ -1,20 +1,28 @@
+import { fetchApiUsers } from '../services/fetchApi';
 import Context from './context';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-async function Provider({ children }) {
+function Provider({ children }) {
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
     const [userId, setUserId] = useState([]);
 
+    useEffect(() => {
+        async function fetchUserData() {
+            const data = await fetchApiUsers();
 
-    const data = await fetchApiUsers()
-    const dataName = data.name;
-    const dataPassword = data.password;
-    const dataId = data.id;
+           
+            const user = data[0];
 
-    setName(dataName);
-    setPassword(dataPassword);
-    setUserId(dataId);
+            if (user) {
+                setName(user.name);
+                setPassword(user.password);
+                setUserId(user.id);
+            }
+        }
+
+        fetchUserData();
+    }, []);
 
     const contextValue = {
         name,
